@@ -7,17 +7,39 @@ public class Init : MonoBehaviour
     [SerializeField] private PlayerBehaviour _player;
     [SerializeField] private CameraMover _cameraMover;
     [SerializeField] private InputSystem _input;
+    [SerializeField] private UIManager _UIManager;
     private PlayerInput _playerInput;
 
     private void Awake()
     {
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);
         _playerInput = new PlayerInput();
-        _playerInput.Init(_player, _input);
+        Subscribe();
+
     }
 
     private void OnDestroy()
     {
-        _playerInput.Unsubscribe();
+        Unsubscribe();
     }
+
+    private void Subscribe()
+    {
+        _playerInput.Init(_player, _input);
+        _player.inventory.OnAddSucceses += _UIManager.inventory.AddItemSuccusfully;
+        _player.inventory.OnAddFailure += _UIManager.inventory.AddItemFailed;
+        _player.inventory.OnAllItemsRemoved += _UIManager.inventory.RemoveAllItems;
+    }
+
+    private void Unsubscribe()
+    {
+        _playerInput.Unsubscribe();
+        _player.inventory.OnAddSucceses -= _UIManager.inventory.AddItemSuccusfully;
+        _player.inventory.OnAddFailure -= _UIManager.inventory.AddItemFailed;
+        _player.inventory.OnAllItemsRemoved -= _UIManager.inventory.RemoveAllItems;
+    }
+
+
+
+
 }
