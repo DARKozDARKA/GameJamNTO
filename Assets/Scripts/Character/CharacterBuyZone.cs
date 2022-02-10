@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class CharacterBuyZone : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    public Character character;
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 9 && Input.GetKeyDown(KeyCode.F))
+        if (other.gameObject.layer == 9 && other.tag == "Item")
         {
-            DoWithItem(other);
+            Item item = other.GetComponent<Item>();
+            character.SetNewCurrentItem(item);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 9 && other.tag == "Item")
+        {
+            character.DeleteCurrentItem();
         }
     }
 
-    private void DoWithItem(Collider other)
+    private void DestroyItem(Collider other)
     {
         print(other.gameObject.name);
         Destroy(other.gameObject);

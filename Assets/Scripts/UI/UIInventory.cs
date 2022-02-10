@@ -8,7 +8,7 @@ public class UIInventory : MonoBehaviour
     // Базовая реализация
     [SerializeField] private Text _text;
 
-    public void AddItemSuccusfully(Item newItem)
+    public void AddItemSuccusfully(ScriptableItem newItem)
     {
         print("added new item");
     }

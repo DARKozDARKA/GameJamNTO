@@ -6,20 +6,20 @@ using System;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private int _maxWeight = 5;
-    private List<Item> _items;
+    [SerializeField] private List<ScriptableItem> _items;
     private int _totalWeight;
 
-    public Action<Item> OnAddSucceses;
+    public Action<ScriptableItem> OnAddSucceses;
     public Action OnAddFailure;
     public Action OnAllItemsRemoved;
 
 
     private void Awake()
     {
-        _items = new List<Item>();
+        _items = new List<ScriptableItem>();
     }
 
-    public bool CheckIfCanAdd(Item item)
+    public bool CheckIfCanAdd(ScriptableItem item)
     {
         if (item.weight + _totalWeight > _maxWeight)
         {
@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void AddItem(Item item)
+    public void AddItem(ScriptableItem item)
     {
         if (item.weight + _totalWeight > _maxWeight)
         {

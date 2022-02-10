@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private int _weight;
-    public int weight => _weight;
+    public ItemOutlineTrigger outlineTrigger;
+    public ScriptableItem scriptableItem;
+    public int weight => scriptableItem.weight;
 }

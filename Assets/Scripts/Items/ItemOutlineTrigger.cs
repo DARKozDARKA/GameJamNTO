@@ -13,14 +13,11 @@ public class ItemOutlineTrigger : MonoBehaviour
         onPlayerExit.Invoke();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetChoose(bool isChoosing)
     {
-        if (other.gameObject.layer == 10)
+        if(isChoosing)
             onPlayerEnter.Invoke();
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.layer == 10)
+        else
             onPlayerExit.Invoke();
     }
 }

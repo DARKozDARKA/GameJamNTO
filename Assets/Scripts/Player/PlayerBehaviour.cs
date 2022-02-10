@@ -7,7 +7,6 @@ public class PlayerBehaviour : Character
 {
     private PlayerMover _playerMover;
     [SerializeField] private Camera _camera;
-    [SerializeField] private Item _testItem;
 
 
     protected override void Awake()
@@ -21,7 +20,7 @@ public class PlayerBehaviour : Character
 
     public override void AddItem(Item newItem)
     {
-        _inventory.AddItem(newItem);
+        _inventory.AddItem(newItem.scriptableItem);
     }
 
 
@@ -30,10 +29,12 @@ public class PlayerBehaviour : Character
         _playerMover.SetMoveDirection(moveDirection);
     }
 
-    public void Interact() // On player pressed interact button
+    public override void Interact() // On player pressed interact button
     {
-        if (_inventory.CheckIfCanAdd(_testItem))
-            AddItem(_testItem);
+        if (_currentSelectedItem == null)
+            return;
+        if (_inventory.CheckIfCanAdd(_currentSelectedItem.scriptableItem))
+            AddItem(_currentSelectedItem);
     }
 
 
