@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ogurec
   m_EditorClassIdentifier: 
   instanceSize: {x: 1, y: 1}
-  weight: 1
-  cost: 100
+  weight: 2
+  cost: 200
   prefab: {fileID: 0}
