@@ -2,34 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-[RequireComponent(typeof(Inventory))]
+[RequireComponent(typeof(Inventory), typeof(Character_MoneyController))]
 public abstract class Character : MonoBehaviour
 {
     protected Inventory _inventory;
+    protected Character_MoneyController _moneyController;
+    public Character_MoneyController moneyController => _moneyController;
     public Inventory inventory => _inventory;
-    [SerializeField]protected Item _currentSelectedItem;
-    public void SetNewCurrentItem(Item item)
+    [SerializeField]protected InteractableTable _currentSelectedTable;
+    public virtual void SetNewCurrentTable(InteractableTable table)
     {
-        if (_currentSelectedItem != null)
+        if (_currentSelectedTable != null)
             DeleteCurrentItem();
 
-        _currentSelectedItem = item;
-        _currentSelectedItem.outlineTrigger.SetChoose(true);
+        _currentSelectedTable = table;
     }
-    public void DeleteCurrentItem()
+    public virtual void DeleteCurrentItem()
     {
-        if (_currentSelectedItem == null)
+        if (_currentSelectedTable == null)
             return;
-
-        _currentSelectedItem.outlineTrigger.SetChoose(false);
-        _currentSelectedItem = null;
+        _currentSelectedTable = null;
     }
 
     protected virtual void Awake()
     {
+        _moneyController = GetComponent<Character_MoneyController>();
         _inventory = GetComponent<Inventory>();
+        _inventory.SetCharacter(this);
     }
-    public abstract void AddItem(Item newItem);
+    public abstract void AddItem(Item_Table newItem);
 
     public abstract void Interact();
+
+    public virtual void BuyAllItems()
+    {
+        inventory.BuyAllItems();
+    }
 }

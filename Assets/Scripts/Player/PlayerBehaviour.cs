@@ -8,7 +8,18 @@ public class PlayerBehaviour : Character
     private PlayerMover _playerMover;
     [SerializeField] private Camera _camera;
 
-
+    public override void SetNewCurrentTable(InteractableTable table)
+    {
+        base.SetNewCurrentTable(table);
+        _currentSelectedTable.outlineTrigger.SetChoose(true);
+    }
+    public override void DeleteCurrentItem()
+    {
+        if (_currentSelectedTable == null)
+            return;
+        _currentSelectedTable.outlineTrigger.SetChoose(false);
+        base.DeleteCurrentItem();
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +29,7 @@ public class PlayerBehaviour : Character
         gameObject.layer = 10;
     }
 
-    public override void AddItem(Item newItem)
+    public override void AddItem(Item_Table newItem)
     {
         _inventory.AddItem(newItem.scriptableItem);
     }
@@ -31,10 +42,18 @@ public class PlayerBehaviour : Character
 
     public override void Interact() // On player pressed interact button
     {
-        if (_currentSelectedItem == null)
+        if (_currentSelectedTable == null)
             return;
-        if (_inventory.CheckIfCanAdd(_currentSelectedItem.scriptableItem))
-            AddItem(_currentSelectedItem);
+        if(_currentSelectedTable.tag == "Item")
+        {
+            Item_Table itemTable = _currentSelectedTable.GetComponent<Item_Table>();
+            if (_inventory.CheckIfCanAdd(itemTable.scriptableItem))
+                AddItem(itemTable);
+        }
+        else if(_currentSelectedTable.tag == "CashBox")
+        {
+            _inventory.BuyAllItems();
+        }
     }
 
 

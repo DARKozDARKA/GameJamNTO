@@ -5,14 +5,18 @@ using System;
 
 public class Inventory : MonoBehaviour
 {
+    private Character character;
     [SerializeField] private int _maxWeight = 5;
+    public int maxWeight => _maxWeight;
     [SerializeField] private List<ScriptableItem> _items;
     private int _totalWeight;
+    public int totalWeight => _totalWeight;
 
     public Action<ScriptableItem> OnAddSucceses;
     public Action OnAddFailure;
     public Action OnAllItemsRemoved;
 
+    public void SetCharacter(Character character) => this.character = character;
 
     private void Awake()
     {
@@ -41,8 +45,10 @@ public class Inventory : MonoBehaviour
         OnAddSucceses?.Invoke(item);
     }
 
-    public void RemoveAllItems()
+    public void BuyAllItems()
     {
+        foreach (var item in _items)
+            character.moneyController.BuyItem(item);
         _items.Clear();
         _totalWeight = 0;
         OnAllItemsRemoved?.Invoke();

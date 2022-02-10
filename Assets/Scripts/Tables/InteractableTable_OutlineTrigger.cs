@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemOutlineTrigger : MonoBehaviour
+public class InteractableTable_OutlineTrigger : MonoBehaviour
 {
     public UnityEvent onPlayerEnter, onPlayerExit;
     // Start is called before the first frame update

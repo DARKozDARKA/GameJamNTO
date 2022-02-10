@@ -15,7 +15,6 @@ public class Init : MonoBehaviour
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);
         _playerInput = new PlayerInput();
         Subscribe();
-
     }
 
     private void OnDestroy()
@@ -25,6 +24,7 @@ public class Init : MonoBehaviour
 
     private void Subscribe()
     {
+        _UIManager.inventory.player = _player;
         _playerInput.Init(_player, _input);
         _player.inventory.OnAddSucceses += _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure += _UIManager.inventory.AddItemFailed;

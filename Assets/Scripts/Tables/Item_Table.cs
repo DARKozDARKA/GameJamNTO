@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item_Table : InteractableTable
 {
-    public ItemOutlineTrigger outlineTrigger;
     public ScriptableItem scriptableItem;
     public int weight => scriptableItem.weight;
 }
