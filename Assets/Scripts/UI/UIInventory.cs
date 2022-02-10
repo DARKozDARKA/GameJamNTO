@@ -10,7 +10,7 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private Text _inventoryText;
 
 
-    public void ChangeCountText() 
+    public void ChangeCountText()
     {
         _inventoryText.text = player.inventory.totalWeight.ToString() + " / " + player.inventory.maxWeight.ToString();
     }
