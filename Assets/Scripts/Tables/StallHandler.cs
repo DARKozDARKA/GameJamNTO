@@ -6,6 +6,7 @@ public class StallHandler : MonoBehaviour
 {
     public static StallHandler Instance { get; set; }
     private List<Item_Table> _stalls;
+    private List<CashBox_Table> _cashboxes;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class StallHandler : MonoBehaviour
         }
         Instance = this;
         _stalls = new List<Item_Table>();
+        _cashboxes = new List<CashBox_Table>();
     }
 
     public void AddNewItem(Item_Table item)
@@ -23,9 +25,19 @@ public class StallHandler : MonoBehaviour
         _stalls.Add(item);
     }
 
+    public void AddNewCash(CashBox_Table item)
+    {
+        _cashboxes.Add(item);
+    }
+
     public Item_Table GetRandomItem()
     {
         return _stalls[Random.Range(0, _stalls.Count)];
+    }
+
+    public CashBox_Table GetRandomCash()
+    {
+        return _cashboxes[Random.Range(0, _cashboxes.Count)];
     }
 
 }

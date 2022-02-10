@@ -33,7 +33,14 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
+
         var newItem = StallHandler.Instance.GetRandomItem().interactPoint.position;
+        _agent.SetDestination(newItem);
+    }
+
+    private void SetNewCash()
+    {
+        var newItem = StallHandler.Instance.GetRandomCash().interactPoint.position;
         _agent.SetDestination(newItem);
     }
 
@@ -47,10 +54,18 @@ public class Enemy : Character
     {
         if (_currentSelectedTable == null)
             return;
-        base.Interact(); 
+        base.Interact();
         if (_currentSelectedTable.tag == "Item")
             if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
                 SetNewStall();
+            else
+                SetNewCash();
+        else if (_currentSelectedTable.tag == "CashBox")
+            SetNewStall();
+
+
+
+
     }
 
     private IEnumerator InteractReload()

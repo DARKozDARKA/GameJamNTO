@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class CashBox_Table : InteractableTable
 {
+    private void Start()
+    {
+        StallHandler.Instance.AddNewCash(this);
+    }
 }

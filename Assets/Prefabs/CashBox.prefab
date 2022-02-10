@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineTrigger: {fileID: 4816008650072445552}
+  _interactPoint: {fileID: 4816008650144504593}
 --- !u!1001 &3289190042092570474
 PrefabInstance:
   m_ObjectHideFlags: 0
