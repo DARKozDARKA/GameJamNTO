@@ -230,6 +230,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1052097799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052097801}
+  - component: {fileID: 1052097800}
+  m_Layer: 0
+  m_Name: TestItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1052097800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052097799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae3373b4690a68489b477b3347b3e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weight: 2
+--- !u!4 &1052097801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052097799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 554.8491, y: 318.75403, z: 110.61926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203171538
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +496,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d3c69632147d447b2d4624b7804cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraParameters:
+    angleXZ: 45
+    angleY: 0
+    distance: 30
+    speedOfMove: 25
+    speedOfRotating: 25
+    camera: {fileID: 0}
 --- !u!114 &1645266905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85220a6a5af71f94086d30d090fc9891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 0}
+  _text: {fileID: 1203171540}
 --- !u!1 &1940170932
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1645266902}
+  _testItem: {fileID: 1052097800}
 --- !u!114 &2038454312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bb3f0e0d41412408c89b4d9638570a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 0}
+  _inventory: {fileID: 1882907317}
 --- !u!114 &2082546371
 MonoBehaviour:
   m_ObjectHideFlags: 0
