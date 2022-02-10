@@ -21,7 +21,7 @@ public class CameraMover : MonoBehaviour
     private Camera _camera;
     private Transform _target;
 
-    private CameraParameters _cameraParameters;
+    [SerializeField]private CameraParameters _cameraParameters;
 
 
     public void Init(CameraParameters cameraParameters, Transform target)
