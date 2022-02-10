@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour
 {
     protected Inventory _inventory;
     public Inventory inventory => _inventory;
-    [SerializeField]protected Item _currentSelectedItem;
+    [SerializeField] protected Item _currentSelectedItem;
     public void SetNewCurrentItem(Item item)
     {
         if (_currentSelectedItem != null)

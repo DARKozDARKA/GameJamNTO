@@ -7,4 +7,8 @@ public class Item : MonoBehaviour
     public ItemOutlineTrigger outlineTrigger;
     public ScriptableItem scriptableItem;
     public int weight => scriptableItem.weight;
+
+
+
+
 }

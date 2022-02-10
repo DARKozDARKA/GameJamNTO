@@ -23,7 +23,6 @@ public class CharacterBuyZone : MonoBehaviour
 
     private void DestroyItem(Collider other)
     {
-        print(other.gameObject.name);
         Destroy(other.gameObject);
     }
 }
