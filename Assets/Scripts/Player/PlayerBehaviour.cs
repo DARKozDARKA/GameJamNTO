@@ -13,4 +13,11 @@ public class PlayerBehaviour : MonoBehaviour
         _playerMover = GetComponent<PlayerMover>();
     }
 
+    public void SetMoveDirection(Vector2 moveDirection)
+    {
+        _playerMover.SetMoveDirection(moveDirection);
+    }
+
+    public void Interact() { }
+
 }

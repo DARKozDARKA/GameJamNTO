@@ -14,6 +14,7 @@ public class PlayerMover : CharacterMover
     private float _startHeight;
 
     private bool _initStartHeight = false;
+    private Vector2 _moveDirection;
 
     private bool _canMove = true;
 
@@ -40,8 +41,8 @@ public class PlayerMover : CharacterMover
             {
                 Vector3 forward = Quaternion.AngleAxis(_cameraRotation.y, Vector3.up) * Vector3.forward;
                 Vector3 right = Quaternion.AngleAxis(_cameraRotation.y, Vector3.up) * Vector3.right;
-                float curSpeedX = _canMove ? _speed * Input.GetAxis("Vertical") : 0;
-                float curSpeedY = _canMove ? _speed * Input.GetAxis("Horizontal") : 0;
+                float curSpeedX = _canMove ? _speed * _moveDirection.x : 0;
+                float curSpeedY = _canMove ? _speed * _moveDirection.y : 0;
                 moveDirection = (forward * curSpeedX) + (right * curSpeedY);
                 moveDirection = moveDirection.normalized * _speed;
             }
@@ -73,6 +74,11 @@ public class PlayerMover : CharacterMover
     public void SetNewCameraAngle(float angle)
     {
         _cameraRotation.y = angle;
+    }
+
+    public void SetMoveDirection(Vector2 moveDirection)
+    {
+        _moveDirection = moveDirection;
     }
 
 }
