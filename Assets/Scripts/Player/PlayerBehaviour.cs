@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMover), typeof(Inventory))]
+[RequireComponent(typeof(PlayerMover))]
 public class PlayerBehaviour : Character
 {
     private PlayerMover _playerMover;
@@ -10,10 +10,13 @@ public class PlayerBehaviour : Character
     [SerializeField] private Item _testItem;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _playerMover = GetComponent<PlayerMover>();
-        _inventory = GetComponent<Inventory>();
+
+        gameObject.tag = "Player";
+        gameObject.layer = 10;
     }
 
     public override void AddItem(Item newItem)
@@ -27,7 +30,11 @@ public class PlayerBehaviour : Character
         _playerMover.SetMoveDirection(moveDirection);
     }
 
-    public void Interact() { AddItem(_testItem); } // On player pressed interact button
+    public void Interact() // On player pressed interact button
+    {
+        if (_inventory.CheckIfCanAdd(_testItem))
+            AddItem(_testItem);
+    }
 
 
 }

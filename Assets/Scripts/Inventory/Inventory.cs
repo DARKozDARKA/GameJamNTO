@@ -19,12 +19,22 @@ public class Inventory : MonoBehaviour
         _items = new List<Item>();
     }
 
-    public void AddItem(Item item)
+    public bool CheckIfCanAdd(Item item)
     {
         if (item.weight + _totalWeight > _maxWeight)
         {
             OnAddFailure?.Invoke();
-            return;
+            return false;
+        }
+
+        return true;
+    }
+
+    public void AddItem(Item item)
+    {
+        if (item.weight + _totalWeight > _maxWeight)
+        {
+            throw new Exception("You're loser");
         }
         _items.Add(item);
         _totalWeight += item.weight;
