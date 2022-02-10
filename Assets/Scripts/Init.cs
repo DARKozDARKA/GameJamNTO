@@ -10,7 +10,7 @@ public class Init : MonoBehaviour
     [SerializeField] private UIManager _UIManager;
     private PlayerInput _playerInput;
 
-    private void Awake()
+    private void Start()
     {
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);
         _playerInput = new PlayerInput();
