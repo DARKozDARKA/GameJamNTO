@@ -8,6 +8,7 @@ public class Enemy : Character
 {
     private NavMeshAgent _agent;
     private bool _canInteract = true;
+    private bool _noStalls = false;
 
     protected override void Awake()
     {
@@ -17,7 +18,7 @@ public class Enemy : Character
 
     private void Start()
     {
-        StartCoroutine(StartPlaying());
+        StartCoroutine(StartSeeking());
 
     }
 
@@ -33,9 +34,14 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
-
-        var newItem = StallHandler.Instance.GetRandomItem().interactPoint.position;
-        _agent.SetDestination(newItem);
+        var newItem = StallHandler.Instance.GetRandomItem();
+        if (newItem == null)
+        {
+            SetNewCash();
+            _noStalls = true;
+            return;
+        }
+        _agent.SetDestination(newItem.interactPoint.position);
     }
 
     private void SetNewCash()
@@ -52,19 +58,62 @@ public class Enemy : Character
 
     public override void Interact()
     {
+        /*
         if (_currentSelectedTable == null)
             return;
-        base.Interact();
-        if (_currentSelectedTable.tag == "Item")
-            if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
-                SetNewStall();
-            else
-                SetNewCash();
+
+        if (_noStalls is false)
+        {
+            if (_currentSelectedTable.tag == "Item")
+            {
+                _itemTable = _currentSelectedTable.GetComponent<Item_Table>();
+                if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
+                {
+                    _currentSelectedTable.Interact();
+                    if (_inventory.CheckIsFull())
+                        SetNewCash();
+                    else
+                        SetNewStall();
+                }
+
+                else
+                    SetNewCash();
+            }
+        }
+
+
         else if (_currentSelectedTable.tag == "CashBox")
             SetNewStall();
+        base.Interact();
+        */
 
+        if (_currentSelectedTable == null)
+            return;
+        if (_currentSelectedTable.tag == "Item")
+        {
+            _itemTable = _currentSelectedTable.GetComponent<Item_Table>();
+            if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
+            {
 
+                AddItem(_itemTable);
+                _currentSelectedTable.Interact();
+                if (_inventory.CheckIsFull())
+                    SetNewCash();
+                else
+                    SetNewStall();
+                DeleteCurrentItem();
 
+                return;
+            }
+            SetNewCash();
+            return;
+        }
+        else if (_currentSelectedTable.tag == "CashBox")
+        {
+            _inventory.BuyAllItems();
+            if (_noStalls is true) return;
+            SetNewStall();
+        }
 
     }
 
@@ -75,9 +124,14 @@ public class Enemy : Character
         _canInteract = true;
     }
 
-    private IEnumerator StartPlaying()
+    private IEnumerator StartSeeking()
     {
         yield return new WaitForEndOfFrame();
+        SetNewStall();
+    }
+
+    public override void CancelInteract()
+    {
         SetNewStall();
     }
 }

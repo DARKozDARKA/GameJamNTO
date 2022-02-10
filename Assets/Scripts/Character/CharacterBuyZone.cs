@@ -10,6 +10,12 @@ public class CharacterBuyZone : MonoBehaviour
         if (other.gameObject.layer == 9 && (other.tag == "Item" || other.tag == "CashBox"))
         {
             InteractableTable table = other.GetComponent<InteractableTable>();
+            if (table.canBeUsed is false)
+            {
+                character.CancelInteract();
+                return;
+            }
+
             character.SetNewCurrentTable(table);
         }
     }

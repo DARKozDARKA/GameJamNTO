@@ -8,4 +8,9 @@ public abstract class InteractableTable : MonoBehaviour
 
     [SerializeField] private Transform _interactPoint;
     public Transform interactPoint => _interactPoint;
+
+    public abstract void Interact();
+
+    protected bool _canBeUsed = true;
+    public bool canBeUsed => _canBeUsed;
 }

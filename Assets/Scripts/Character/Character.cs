@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour
     protected Character_MoneyController _moneyController;
     public Character_MoneyController moneyController => _moneyController;
     public Inventory inventory => _inventory;
-    [SerializeField]protected InteractableTable _currentSelectedTable;
+    [SerializeField] protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
     public virtual void SetNewCurrentTable(InteractableTable table)
     {
@@ -41,7 +41,14 @@ public abstract class Character : MonoBehaviour
         {
             _itemTable = _currentSelectedTable.GetComponent<Item_Table>();
             if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
+            {
+
                 AddItem(_itemTable);
+                _currentSelectedTable.Interact();
+                DeleteCurrentItem();
+
+                return;
+            }
         }
         else if (_currentSelectedTable.tag == "CashBox")
         {
@@ -49,8 +56,18 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+    protected virtual void GetItemTable()
+    {
+        _itemTable = _currentSelectedTable.GetComponent<Item_Table>();
+    }
+
     public virtual void BuyAllItems()
     {
         inventory.BuyAllItems();
+    }
+
+    public virtual void CancelInteract()
+    {
+        // Pass
     }
 }

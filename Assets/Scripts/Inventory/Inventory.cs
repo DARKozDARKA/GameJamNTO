@@ -53,4 +53,9 @@ public class Inventory : MonoBehaviour
         _totalWeight = 0;
         OnAllItemsRemoved?.Invoke();
     }
+
+    public bool CheckIsFull()
+    {
+        return totalWeight == maxWeight;
+    }
 }

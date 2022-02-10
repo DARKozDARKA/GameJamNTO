@@ -25,6 +25,11 @@ public class StallHandler : MonoBehaviour
         _stalls.Add(item);
     }
 
+    public void RemoveItem(Item_Table item)
+    {
+        _stalls.Remove(item);
+    }
+
     public void AddNewCash(CashBox_Table item)
     {
         _cashboxes.Add(item);
@@ -32,11 +37,13 @@ public class StallHandler : MonoBehaviour
 
     public Item_Table GetRandomItem()
     {
+        if (_stalls.Count == 0) return null;
         return _stalls[Random.Range(0, _stalls.Count)];
     }
 
     public CashBox_Table GetRandomCash()
     {
+
         return _cashboxes[Random.Range(0, _cashboxes.Count)];
     }
 
