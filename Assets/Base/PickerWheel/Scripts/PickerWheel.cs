@@ -179,6 +179,7 @@ namespace EasyUI.PickerWheelUI
                     {
                         if (isIndicatorOnTheLine)
                         {
+                            audioSource.pitch = Random.Range(0.9f, 1.1f);
                             audioSource.PlayOneShot(audioSource.clip);
                         }
                         prevAngle = currentAngle;
