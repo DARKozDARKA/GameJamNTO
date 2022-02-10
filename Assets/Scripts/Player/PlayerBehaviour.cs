@@ -40,21 +40,7 @@ public class PlayerBehaviour : Character
         _playerMover.SetMoveDirection(moveDirection);
     }
 
-    public override void Interact() // On player pressed interact button
-    {
-        if (_currentSelectedTable == null)
-            return;
-        if(_currentSelectedTable.tag == "Item")
-        {
-            Item_Table itemTable = _currentSelectedTable.GetComponent<Item_Table>();
-            if (_inventory.CheckIfCanAdd(itemTable.scriptableItem))
-                AddItem(itemTable);
-        }
-        else if(_currentSelectedTable.tag == "CashBox")
-        {
-            _inventory.BuyAllItems();
-        }
-    }
+
 
 
 }

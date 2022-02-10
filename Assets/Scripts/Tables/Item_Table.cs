@@ -7,7 +7,8 @@ public class Item_Table : InteractableTable
     public ScriptableItem scriptableItem;
     public int weight => scriptableItem.weight;
 
-
-
-
+    private void Start()
+    {
+        StallHandler.Instance.AddNewItem(this);
+    }
 }

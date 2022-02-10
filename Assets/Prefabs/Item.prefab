@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 4142486803060437072}
   - component: {fileID: 4142486803060437075}
   - component: {fileID: 7508796384320174445}
-  - component: {fileID: 8604421353282457947}
   m_Layer: 9
   m_Name: Item
   m_TagString: Item
@@ -207,21 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineTrigger: {fileID: 4142486802856261950}
-  scriptableItem: {fileID: 11400000, guid: 74192fc0798b77e4394ce16c165049a2, type: 2}
---- !u!114 &8604421353282457947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4142486803060437074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5456749d672842944a4187d6363888c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _item: {fileID: 7508796384320174445}
   _interactPoint: {fileID: 4316041036180318345}
+  scriptableItem: {fileID: 11400000, guid: 74192fc0798b77e4394ce16c165049a2, type: 2}
 --- !u!1 &7867608937142624210
 GameObject:
   m_ObjectHideFlags: 0

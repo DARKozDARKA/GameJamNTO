@@ -38,25 +38,19 @@ public class Enemy : Character
     }
 
 
-    public override void AddItem(Item newItem)
+    public override void AddItem(Item_Table newItem)
     {
         _inventory.AddItem(newItem.scriptableItem);
     }
 
     public override void Interact()
     {
-        if (_currentSelectedItem == null)
+        if (_currentSelectedTable == null)
             return;
-        if (_inventory.CheckIfCanAdd(_currentSelectedItem.scriptableItem))
-        {
-            SetNewStall();
-            AddItem(_currentSelectedItem);
-        }
-        else
-        {
-            _inventory.RemoveAllItems();
-        }
-
+        base.Interact(); 
+        if (_currentSelectedTable.tag == "Item")
+            if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
+                SetNewStall();
     }
 
     private IEnumerator InteractReload()

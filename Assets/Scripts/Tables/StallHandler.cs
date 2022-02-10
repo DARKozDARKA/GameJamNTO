@@ -5,7 +5,7 @@ using UnityEngine;
 public class StallHandler : MonoBehaviour
 {
     public static StallHandler Instance { get; set; }
-    private List<Stall> _stalls;
+    private List<Item_Table> _stalls;
 
     private void Awake()
     {
@@ -15,15 +15,15 @@ public class StallHandler : MonoBehaviour
             Instance = null;
         }
         Instance = this;
-        _stalls = new List<Stall>();
+        _stalls = new List<Item_Table>();
     }
 
-    public void AddNewItem(Stall item)
+    public void AddNewItem(Item_Table item)
     {
         _stalls.Add(item);
     }
 
-    public Stall GetRandomItem()
+    public Item_Table GetRandomItem()
     {
         return _stalls[Random.Range(0, _stalls.Count)];
     }
