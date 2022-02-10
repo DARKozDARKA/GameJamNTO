@@ -29,6 +29,8 @@ public class Init : MonoBehaviour
         _player.inventory.OnAddSucceses += _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure += _UIManager.inventory.AddItemFailed;
         _player.inventory.OnAllItemsRemoved += _UIManager.inventory.RemoveAllItems;
+        _player.moneyController.OnMoneyChange += _UIManager.money.ChangeMoney;
+        _UIManager.wheel.OnCostEstablished += _player.moneyController.SetStartMoney;
     }
 
     private void Unsubscribe()
@@ -37,6 +39,8 @@ public class Init : MonoBehaviour
         _player.inventory.OnAddSucceses -= _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure -= _UIManager.inventory.AddItemFailed;
         _player.inventory.OnAllItemsRemoved -= _UIManager.inventory.RemoveAllItems;
+        _player.moneyController.OnMoneyChange -= _UIManager.money.ChangeMoney;
+        _UIManager.wheel.OnCostEstablished -= _player.moneyController.SetStartMoney;
     }
 
 

@@ -6,6 +6,7 @@ namespace EasyUI.PickerWheelUI
     public class WheelPiece
     {
         public string Label;
+        public int amount;
 
         [Tooltip("Probability in %")]
         [Range(0f, 100f)]

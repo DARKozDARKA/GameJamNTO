@@ -60,6 +60,7 @@ namespace EasyUI.PickerWheelUI
         private System.Random rand = new System.Random();
 
         private List<int> nonZeroChancesIndices = new List<int>();
+        public System.Action<int> OnCostEstablished;
 
         private void Start()
         {
@@ -85,7 +86,9 @@ namespace EasyUI.PickerWheelUI
 
         private void PrintWin(WheelPiece piece)
         {
-            print(piece.Label);
+            print(System.Convert.ToInt32(piece.amount));
+            OnCostEstablished?.Invoke(System.Convert.ToInt32(piece.amount));
+
             Destroy(gameObject);
         }
 

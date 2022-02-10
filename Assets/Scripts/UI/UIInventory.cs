@@ -8,11 +8,13 @@ public class UIInventory : MonoBehaviour
     public Character player;
     // Базовая реализация
     [SerializeField] private Text _inventoryText;
+    [SerializeField] private Text _currentCostText;
 
 
     public void ChangeCountText()
     {
         _inventoryText.text = player.inventory.totalWeight.ToString() + " / " + player.inventory.maxWeight.ToString();
+        _currentCostText.text = player.inventory.currentCost.ToString();
     }
     public void AddItemSuccusfully(ScriptableItem newItem)
     {

@@ -11,6 +11,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<ScriptableItem> _items;
     private int _totalWeight;
     public int totalWeight => _totalWeight;
+    private int _currentCost = 0;
+    public int currentCost => _currentCost;
 
     public Action<ScriptableItem> OnAddSucceses;
     public Action OnAddFailure;
@@ -42,6 +44,7 @@ public class Inventory : MonoBehaviour
         }
         _items.Add(item);
         _totalWeight += item.weight;
+        _currentCost += item.cost;
         OnAddSucceses?.Invoke(item);
     }
 
@@ -51,6 +54,7 @@ public class Inventory : MonoBehaviour
             character.moneyController.BuyItem(item);
         _items.Clear();
         _totalWeight = 0;
+        _currentCost = 0;
         OnAllItemsRemoved?.Invoke();
     }
 
