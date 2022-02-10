@@ -7,11 +7,13 @@ public class PlayerBehaviour : Character
 {
     private PlayerMover _playerMover;
     [SerializeField] private Camera _camera;
+    [SerializeField] private Item _testItem;
 
 
     private void Awake()
     {
         _playerMover = GetComponent<PlayerMover>();
+        _inventory = GetComponent<Inventory>();
     }
 
     public override void AddItem(Item newItem)
@@ -25,7 +27,7 @@ public class PlayerBehaviour : Character
         _playerMover.SetMoveDirection(moveDirection);
     }
 
-    public void Interact() { } // On player pressed interact button
+    public void Interact() { AddItem(_testItem); } // On player pressed interact button
 
 
 }
