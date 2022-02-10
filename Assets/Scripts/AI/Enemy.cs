@@ -17,7 +17,8 @@ public class Enemy : Character
 
     private void Start()
     {
-        SetNewStall();
+        StartCoroutine(StartPlaying());
+
     }
 
     private void Update()
@@ -53,7 +54,7 @@ public class Enemy : Character
         }
         else
         {
-
+            _inventory.RemoveAllItems();
         }
 
     }
@@ -63,5 +64,11 @@ public class Enemy : Character
         _canInteract = false;
         yield return new WaitForSeconds(0.5f);
         _canInteract = true;
+    }
+
+    private IEnumerator StartPlaying()
+    {
+        yield return new WaitForEndOfFrame();
+        SetNewStall();
     }
 }
