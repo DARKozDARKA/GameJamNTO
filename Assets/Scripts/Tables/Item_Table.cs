@@ -17,6 +17,7 @@ public class Item_Table : InteractableTable
     {
         StallHandler.Instance.AddNewItem(this);
         scriptableItem = scriptableItems[UnityEngine.Random.Range(0, scriptableItems.Length)];
+        var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, _itemPoint.rotation);
         var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, Quaternion.identity);
         newModel.transform.parent = transform;
         OnModelSet?.Invoke(newModel);

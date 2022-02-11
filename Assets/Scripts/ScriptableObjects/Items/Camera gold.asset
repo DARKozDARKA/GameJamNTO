@@ -15,7 +15,6 @@ MonoBehaviour:
   instanceSize: {x: 1, y: 1}
   weight: 1
   cost: 1000
-  prefab: {fileID: 775107091714507556, guid: d638e6846ca27da4a821ff43eb2cafd4, type: 3}
   headPrefab: {fileID: 775107091714507556, guid: d638e6846ca27da4a821ff43eb2cafd4,
     type: 3}
   hightOfHeadPrefab: 0.25
