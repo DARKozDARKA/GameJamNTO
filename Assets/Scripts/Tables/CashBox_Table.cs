@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CashBox_Table : InteractableTable
 {
-
+    [SerializeField] private GameObject _spendEffect;
 
     private void Start()
     {
@@ -13,6 +13,6 @@ public class CashBox_Table : InteractableTable
 
     public override void Interact()
     {
-        // Pass
+        Instantiate(_spendEffect, transform.position, Quaternion.identity);
     }
 }

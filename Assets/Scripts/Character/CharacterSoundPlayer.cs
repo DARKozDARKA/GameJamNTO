@@ -8,6 +8,7 @@ public class CharacterSoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip[] _steps;
     [SerializeField] private AudioClip[] _getItem;
     [SerializeField] private AudioClip[] _cashOut;
+    [SerializeField] private AudioClip[] _errors;
 
     public void PlayOneStep()
     {
@@ -24,5 +25,11 @@ public class CharacterSoundPlayer : MonoBehaviour
     {
         _source.pitch = Random.Range(0.9f, 1.1f);
         _source.PlayOneShot(_cashOut[Random.Range(0, _cashOut.Length)]);
+    }
+
+    public void PlayError()
+    {
+        _source.pitch = Random.Range(0.9f, 1.1f);
+        _source.PlayOneShot(_errors[Random.Range(0, _errors.Length)]);
     }
 }

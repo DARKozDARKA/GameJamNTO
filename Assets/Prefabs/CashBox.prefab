@@ -126,6 +126,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineTrigger: {fileID: 4816008650072445552}
   _interactPoint: {fileID: 4816008650144504593}
+  OnDisableInteractive:
+    m_PersistentCalls:
+      m_Calls: []
+  _spendEffect: {fileID: 7682998001946376634, guid: 5080e5c67f5a6b6469b82d31b80a0262,
+    type: 3}
 --- !u!1001 &3289190042092570474
 PrefabInstance:
   m_ObjectHideFlags: 0

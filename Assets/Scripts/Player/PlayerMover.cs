@@ -7,6 +7,7 @@ using System;
 public class PlayerMover : CharacterMover
 {
     //[SerializeField] private float jumpSpeed = 8.0f;
+    [SerializeField] private WalkEffect _walkEffect;
     [SerializeField] private float _gravity = 20.0f;
     [SerializeField] private float _stepPerTime = 0.5f;
     private Transform _cameraTransform;
@@ -18,6 +19,7 @@ public class PlayerMover : CharacterMover
     private Vector2 _moveDirection;
 
     private bool _canMove = true;
+    private bool _previousIsMoving = false;
     public Action OnStep;
     [SerializeField] private bool _isMoving = false;
 
@@ -83,6 +85,14 @@ public class PlayerMover : CharacterMover
     {
         _moveDirection = moveDirection;
         _isMoving = moveDirection != Vector2.zero;
+        if (_isMoving != _previousIsMoving)
+        {
+            _previousIsMoving = _isMoving;
+            if (_isMoving)
+                _walkEffect.Play();
+            else
+                _walkEffect.Stop();
+        }
 
     }
 

@@ -71,12 +71,17 @@ public abstract class Character : MonoBehaviour
                 AddItem(_itemTable);
                 _currentSelectedTable.Interact();
                 DeleteAllCurrentItems();
-
                 return;
+            }
+            else
+            {
+                print("F");
+                _soundPlayer.PlayError();
             }
         }
         else if (_currentSelectedTable.tag == "CashBox")
         {
+            _currentSelectedTable.Interact();
             _inventory.BuyAllItems();
             BuyAllItems();
         }

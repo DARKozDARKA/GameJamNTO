@@ -7,6 +7,7 @@ public class Item_Table : InteractableTable
 {
     [SerializeField] private ScriptableItem[] scriptableItems;
     [SerializeField] private Transform _itemPoint;
+    [SerializeField] private GameObject _stoleEffect;
     public ScriptableItem scriptableItem;
     public int weight => scriptableItem.weight;
     public Action<GameObject> OnModelSet;
@@ -18,7 +19,6 @@ public class Item_Table : InteractableTable
         StallHandler.Instance.AddNewItem(this);
         scriptableItem = scriptableItems[UnityEngine.Random.Range(0, scriptableItems.Length)];
         var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, _itemPoint.rotation);
-        var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, Quaternion.identity);
         newModel.transform.parent = transform;
         OnModelSet?.Invoke(newModel);
     }
@@ -31,6 +31,7 @@ public class Item_Table : InteractableTable
         StallHandler.Instance.RemoveItem(this);
         OnCancel?.Invoke();
         OnDisableInteractive.RemoveAllListeners();
+        Instantiate(_stoleEffect, new Vector3(_itemPoint.position.x, _itemPoint.position.y + 1, _itemPoint.position.z), Quaternion.identity);
     }
 
 

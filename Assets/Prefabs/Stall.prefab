@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4907433457440566207
 Transform:
@@ -51,7 +51,7 @@ GameObject:
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4907433458157842146
 Transform:
@@ -220,6 +220,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dceecdb0608bb844da5ff639d0e63ddc, type: 2}
   - {fileID: 11400000, guid: 181dcde0e49717b4b98a13707eb777b2, type: 2}
   _itemPoint: {fileID: 4907433457440566207}
+  _stoleEffect: {fileID: 9160990441288836277, guid: a3d1b31c811f0a94a9a8e953e015d7cf,
+    type: 3}
   scriptableItem: {fileID: 11400000, guid: 43bd05c5b38b2f644b16cfad286467d9, type: 2}
 --- !u!114 &4907433458157842147
 MonoBehaviour:
@@ -251,7 +253,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4907433458808808902
 Transform:
@@ -283,7 +285,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4907433458845567743
 Transform:
@@ -360,7 +362,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4907433458854622772
 Transform:
@@ -387,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemOutlineTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030035453965554964, guid: bf883bae07bd4fe4d8b953cd271f838e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8030035453965554965, guid: bf883bae07bd4fe4d8b953cd271f838e,
         type: 3}
@@ -442,6 +449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030035454102708893, guid: bf883bae07bd4fe4d8b953cd271f838e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf883bae07bd4fe4d8b953cd271f838e, type: 3}

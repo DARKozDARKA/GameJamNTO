@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Enemy : Character
 {
     [SerializeField] private float _stepTime;
+    [SerializeField] private WalkEffect _walkEffect;
     private NavMeshAgent _agent;
     private bool _canInteract = true;
     private bool _noStalls = false;
@@ -49,6 +50,7 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
+        if (_isExciting) return;
         if (_huntingItem != null)
         {
             _huntingItem.OnCancel -= CancelInteract;
@@ -70,6 +72,7 @@ public class Enemy : Character
 
     private void SetNewCash()
     {
+        if (_isExciting) return;
         var newItem = StallHandler.Instance.GetRandomCash().interactPoint.position;
         _agent.SetDestination(newItem);
         _idleTimer = 15;
@@ -83,7 +86,7 @@ public class Enemy : Character
 
     public override void Interact()
     {
-
+        if (_isExciting) return;
         if (_currentSelectedTable == null)
             return;
         if (_currentSelectedTable.tag == "Item")
@@ -144,8 +147,14 @@ public class Enemy : Character
             if (_agent.velocity.magnitude != 0)
             {
                 _soundPlayer.PlayOneStep();
+                _walkEffect.Play();
 
             }
+            else
+            {
+                _walkEffect.Stop();
+            }
+
             yield return new WaitForSeconds(_stepTime * Random.Range(0.9f, 1.1f));
 
         }
@@ -153,8 +162,8 @@ public class Enemy : Character
 
     private void GoToExit()
     {
-        _agent.SetDestination(AIHandler.Instance.exit.position);
         _isExciting = true;
+        _agent.SetDestination(AIHandler.Instance.exit.position);
     }
 
     private void Die()
