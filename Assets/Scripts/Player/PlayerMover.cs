@@ -104,4 +104,10 @@ public class PlayerMover : CharacterMover
 
     }
 
+
+    public override Vector2 GetMoveTransition()
+    {
+        return new Vector2(_characterController.velocity.x / _speed, _characterController.velocity.z / _speed);
+    }
+
 }

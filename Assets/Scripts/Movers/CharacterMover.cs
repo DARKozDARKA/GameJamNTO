@@ -14,5 +14,6 @@ public abstract class CharacterMover : MonoBehaviour
     {
         _state = state;
     }
+    public abstract Vector2 GetMoveTransition();
 
 }

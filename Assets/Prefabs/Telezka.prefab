@@ -426,8 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e891efb3512ff4f809ee59847b9247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  character: {fileID: 0}
   spawnPoint: {fileID: 74041354936985263}
+  maxAngle: 5
 --- !u!1 &8784337357484766742
 GameObject:
   m_ObjectHideFlags: 0

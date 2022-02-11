@@ -4,49 +4,66 @@ using UnityEngine;
 
 public class InventoryVisualizer : MonoBehaviour
 {
-    public Inventory inventory;
+    public Character character;
     public List<InstantItemOnHead> instantiatedGM;
     public Transform spawnPoint;
 
     private bool isSelling;
 
-    public Vector2 rotation;
+    public float maxAngle;
 
     private void Start()
     {
-        inventory.OnAddSucceses += Instantiate;
-        inventory.OnAllItemsRemoved += SellAll;
+        character.inventory.OnAddSucceses += Instantiate;
+        character.inventory.OnAllItemsRemoved += SellAll;
         instantiatedGM = new List<InstantItemOnHead>();
-    }
-
-    public void Instantiate(ScriptableItem item)
-    {
-        Vector3 newSpawn = spawnPoint.position;
-        newSpawn.y += CulculateHight();
-        InstantItemOnHead instant = new InstantItemOnHead();
-        instant.instance = Instantiate(item.headPrefab, newSpawn, spawnPoint.rotation);
-        instant.reference = item;
-        if(instantiatedGM.Count == 0)
-            instant.instance.transform.SetParent(spawnPoint);
-        else
-            instant.instance.transform.SetParent(instantiatedGM[instantiatedGM.Count - 1].instance.transform);
-        instantiatedGM.Add(instant);
-    }
-
-    public void SetAngle(float x, float z)
-    {
-        foreach (var item in instantiatedGM)
-        {
-            Vector3 rotation = item.instance.transform.localEulerAngles;
-            rotation.x = x;
-            rotation.z = z;
-            item.instance.transform.localEulerAngles = rotation;
-        }
     }
 
     private void Update()
     {
-        SetAngle(rotation.x, rotation.y);
+        SetAngle(FromDirectionToAngle(character.mover.GetMoveTransition()));
+    }
+
+    public void Instantiate(ScriptableItem item)
+    {
+        Vector3 newPos;
+        Quaternion newRot;
+
+        if (instantiatedGM.Count == 0)
+        {
+            newPos = spawnPoint.position;
+            newRot = spawnPoint.rotation;
+        }
+        else
+        {
+            newPos = instantiatedGM[instantiatedGM.Count - 1].instance.transform.position;
+            newRot = instantiatedGM[instantiatedGM.Count - 1].instance.transform.rotation;
+        }
+        InstantItemOnHead instant = new InstantItemOnHead();
+
+        instant.instance = Instantiate(item.headPrefab, newPos, newRot);
+        instant.reference = item;
+
+        if (instantiatedGM.Count == 0)
+            instant.instance.transform.SetParent(spawnPoint);
+        else
+            instant.instance.transform.SetParent(instantiatedGM[instantiatedGM.Count - 1].instance.transform);
+        Vector3 localPos = instant.instance.transform.localPosition;
+        if (instantiatedGM.Count > 0) 
+            localPos.y += 1;
+        instant.instance.transform.localPosition = localPos;
+        instantiatedGM.Add(instant);
+    }
+
+    public void SetAngle(Vector2 vector)
+    {
+        foreach (var item in instantiatedGM)
+        {
+            Vector3 rotation = item.instance.transform.localEulerAngles;
+            rotation.x = -vector.y;
+            rotation.z = vector.x;
+            item.instance.transform.localEulerAngles = rotation;
+        }
     }
 
     public void SellAll()
@@ -77,6 +94,12 @@ public class InventoryVisualizer : MonoBehaviour
         }
         print(instantiatedGM.Count + " " + hight);
         return hight;
+    }
+
+    public Vector2 FromDirectionToAngle(Vector2 direction)
+    {
+        Vector2 newAngle = new Vector2((direction.x + 1 / 2) * maxAngle, (direction.y - 1 / -2) * maxAngle);
+        return newAngle;
     }
 }
 

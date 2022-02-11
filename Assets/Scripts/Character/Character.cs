@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 [RequireComponent(typeof(Inventory), typeof(Character_MoneyController), typeof(CharacterSoundPlayer))]
+[RequireComponent(typeof(CharacterMover))]
 public abstract class Character : MonoBehaviour
 {
     protected Inventory _inventory;
     protected Character_MoneyController _moneyController;
     public Character_MoneyController moneyController => _moneyController;
+    protected CharacterMover _mover;
+    public CharacterMover mover => _mover;
     public Inventory inventory => _inventory;
     protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
@@ -35,6 +38,7 @@ public abstract class Character : MonoBehaviour
         _moneyController = GetComponent<Character_MoneyController>();
         _soundPlayer = GetComponent<CharacterSoundPlayer>();
         _inventory = GetComponent<Inventory>();
+        _mover = GetComponent<CharacterMover>();
         _inventory.SetCharacter(this);
     }
     public abstract void AddItem(Item_Table newItem);
@@ -77,4 +81,5 @@ public abstract class Character : MonoBehaviour
     {
         // Pass
     }
+
 }
