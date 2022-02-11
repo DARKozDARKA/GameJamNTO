@@ -7,6 +7,8 @@ public class AIHandler : MonoBehaviour
     [SerializeField] private List<string> _names;
     public static AIHandler Instance { get; set; }
     private List<Enemy> _enemies;
+    [SerializeField] private Transform _exit;
+    public Transform exit => _exit;
 
     private void Awake()
     {
