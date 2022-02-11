@@ -75,6 +75,7 @@ public class Init : MonoBehaviour
         _UIManager.screens.SetWinScreen();
         _playerInput.Unsubscribe();
         _player.DisableMovement();
+        AIHandler.Instance.PrintAllEnemiesSpendMoney();
     }
     private void Lose()
     {
@@ -82,6 +83,7 @@ public class Init : MonoBehaviour
         _UIManager.screens.SetLoseScreen();
         _playerInput.Unsubscribe();
         _player.DisableMovement();
+        AIHandler.Instance.PrintAllEnemiesSpendMoney();
     }
 
 

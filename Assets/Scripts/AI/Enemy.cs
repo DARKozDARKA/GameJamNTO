@@ -9,6 +9,8 @@ public class Enemy : Character
     private NavMeshAgent _agent;
     private bool _canInteract = true;
     private bool _noStalls = false;
+    private string _name;
+    public string name => _name;
 
     protected override void Awake()
     {
@@ -29,6 +31,11 @@ public class Enemy : Character
             Interact();
         }
         StartCoroutine(InteractReload());
+    }
+
+    public void SetName(string newName)
+    {
+        _name = newName;
     }
 
     private void SetNewStall()
