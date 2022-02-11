@@ -13,13 +13,13 @@ public class PlayerBehaviour : Character
         if (_currentSelectedTable.canBeUsed)
             _currentSelectedTable.outlineTrigger.SetChoose(true);
     }
-    public override void DeleteCurrentItem()
+    public override void DeleteCurrentItem(InteractableTable table)
     {
         if (_currentSelectedTable == null)
             return;
         if (_currentSelectedTable.canBeUsed)
             _currentSelectedTable.outlineTrigger.SetChoose(false);
-        base.DeleteCurrentItem();
+        base.DeleteCurrentItem(table);
     }
     protected override void Awake()
     {

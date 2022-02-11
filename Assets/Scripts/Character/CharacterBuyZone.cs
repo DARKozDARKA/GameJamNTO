@@ -23,7 +23,8 @@ public class CharacterBuyZone : MonoBehaviour
     {
         if (other.gameObject.layer == 9 && (other.tag == "Item" || other.tag == "CashBox"))
         {
-            character.DeleteCurrentItem();
+            InteractableTable table = other.GetComponent<InteractableTable>();
+            character.DeleteCurrentItem(table);
         }
     }
 

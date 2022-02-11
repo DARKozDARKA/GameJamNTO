@@ -12,24 +12,38 @@ public abstract class Character : MonoBehaviour
     protected CharacterMover _mover;
     public CharacterMover mover => _mover;
     public Inventory inventory => _inventory;
+    protected List<InteractableTable> _currentSelectedTables;
     protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
     protected CharacterSoundPlayer _soundPlayer;
 
     public virtual void SetNewCurrentTable(InteractableTable table)
     {
-        if (_currentSelectedTable != null)
-            DeleteCurrentItem();
+        _currentSelectedTables.Add(table);
 
 
-        _currentSelectedTable = table;
-        _currentSelectedTable.OnCancel += DeleteCurrentItem;
+        _currentSelectedTable = _currentSelectedTables[_currentSelectedTables.Count - 1];
+        _currentSelectedTables[_currentSelectedTables.Count - 1].OnCancel += DeleteAllCurrentItems;
     }
-    public virtual void DeleteCurrentItem()
+    public virtual void DeleteCurrentItem(InteractableTable table)
     {
-        if (_currentSelectedTable == null)
+        _currentSelectedTables.Remove(table);
+
+        if (_currentSelectedTables.Count == 0)
+        {
+            _currentSelectedTable = null;
             return;
-        _currentSelectedTable.OnCancel -= DeleteCurrentItem;
+        }
+        _currentSelectedTable = _currentSelectedTables[_currentSelectedTables.Count - 1];
+    }
+
+    protected virtual void DeleteAllCurrentItems()
+    {
+        for (int i = 0; i < _currentSelectedTables.Count; i++)
+        {
+            _currentSelectedTables[i].OnCancel -= DeleteAllCurrentItems;
+        }
+        _currentSelectedTables.Clear();
         _currentSelectedTable = null;
     }
 
@@ -40,6 +54,7 @@ public abstract class Character : MonoBehaviour
         _inventory = GetComponent<Inventory>();
         _mover = GetComponent<CharacterMover>();
         _inventory.SetCharacter(this);
+        _currentSelectedTables = new List<InteractableTable>();
     }
     public abstract void AddItem(Item_Table newItem);
 
@@ -55,7 +70,7 @@ public abstract class Character : MonoBehaviour
 
                 AddItem(_itemTable);
                 _currentSelectedTable.Interact();
-                DeleteCurrentItem();
+                DeleteAllCurrentItems();
 
                 return;
             }

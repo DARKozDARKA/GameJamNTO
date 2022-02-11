@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 7842540537286504042}
+    - target: {fileID: 4583237555902223673, guid: 736d643bd7f0ded40865debc79ffb94e,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4583237555902223678, guid: 736d643bd7f0ded40865debc79ffb94e,
         type: 3}
       propertyPath: m_RootOrder
