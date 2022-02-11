@@ -8,7 +8,7 @@ using UnityEngine;
 public class CameraParameters
 {
     public float angleXZ = 45f;
-    public float angleY = 0;
+    public float angleY = -90f;
     public float distance = 10f;
     public float speedOfMove = 25f;
     public float speedOfRotating = 25f;

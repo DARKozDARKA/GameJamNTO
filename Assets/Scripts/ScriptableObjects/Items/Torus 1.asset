@@ -17,4 +17,4 @@ MonoBehaviour:
   cost: 450
   headPrefab: {fileID: 2507457886603808978, guid: 0659ba49626fa4c4ea21dc5262c3545c,
     type: 3}
-  hightOfHeadPrefab: 0.25
+  hightOfHeadPrefab: 0.375
