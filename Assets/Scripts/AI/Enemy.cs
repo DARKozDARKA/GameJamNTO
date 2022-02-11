@@ -18,8 +18,7 @@ public class Enemy : Character
 
     private void Start()
     {
-        StartCoroutine(StartSeeking());
-
+        AIHandler.Instance.AddNewEnemy(this);
     }
 
     private void Update()
@@ -124,13 +123,13 @@ public class Enemy : Character
         _canInteract = true;
     }
 
-    private IEnumerator StartSeeking()
+
+    public override void CancelInteract()
     {
-        yield return new WaitForEndOfFrame();
         SetNewStall();
     }
 
-    public override void CancelInteract()
+    public void StartSeeking()
     {
         SetNewStall();
     }

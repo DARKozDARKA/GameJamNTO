@@ -18,6 +18,7 @@ public class Init : MonoBehaviour
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);
         _playerInput = new PlayerInput();
         Subscribe();
+
     }
 
     private void OnDestroy()
@@ -64,6 +65,8 @@ public class Init : MonoBehaviour
     {
         _playerInput.Init(_player, _inputDistribitor.GetInput());
         _UIManager.screens.SetGameScreen();
+        AIHandler.Instance.StartGame();
+
     }
 
     private void Win()
@@ -71,12 +74,14 @@ public class Init : MonoBehaviour
         _timer.OnTimeRunOut -= Lose;
         _UIManager.screens.SetWinScreen();
         _playerInput.Unsubscribe();
+        _player.DisableMovement();
     }
     private void Lose()
     {
         _player.moneyController.OnAllMoneyWasted -= Win;
         _UIManager.screens.SetLoseScreen();
         _playerInput.Unsubscribe();
+        _player.DisableMovement();
     }
 
 
