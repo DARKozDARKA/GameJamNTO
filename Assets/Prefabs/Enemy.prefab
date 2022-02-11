@@ -166,6 +166,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f62ab6a2e72f394892b8ceb7f3addee, type: 3}
   - {fileID: 8300000, guid: 6e0677f1c2064cc4982f875bc2c1cb0f, type: 3}
   - {fileID: 8300000, guid: 1e36e0e552fd05e45b8ab3a3ee99c20e, type: 3}
+  _getItem: []
+  _cashOut: []
 --- !u!82 &4023574578797754283
 AudioSource:
   m_ObjectHideFlags: 0
@@ -175,7 +177,8 @@ AudioSource:
   m_GameObject: {fileID: 7842540537286504037}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 501c6c726244bfd4a90b44ac5f3c5ffe,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.05

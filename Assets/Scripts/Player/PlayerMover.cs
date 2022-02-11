@@ -95,7 +95,7 @@ public class PlayerMover : CharacterMover
     {
         while (true)
         {
-            if (_isMoving)
+            if (_isMoving && _canMove)
                 OnStep?.Invoke();
 
             yield return new WaitForSeconds(_stepPerTime);
