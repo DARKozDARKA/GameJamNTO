@@ -10,6 +10,8 @@ public class InventoryVisualizer : MonoBehaviour
 
     private bool isSelling;
 
+    public Vector2 rotation;
+
     private void Start()
     {
         inventory.OnAddSucceses += Instantiate;
@@ -24,8 +26,27 @@ public class InventoryVisualizer : MonoBehaviour
         InstantItemOnHead instant = new InstantItemOnHead();
         instant.instance = Instantiate(item.headPrefab, newSpawn, spawnPoint.rotation);
         instant.reference = item;
-        instant.instance.transform.SetParent(spawnPoint);
+        if(instantiatedGM.Count == 0)
+            instant.instance.transform.SetParent(spawnPoint);
+        else
+            instant.instance.transform.SetParent(instantiatedGM[instantiatedGM.Count - 1].instance.transform);
         instantiatedGM.Add(instant);
+    }
+
+    public void SetAngle(float x, float z)
+    {
+        foreach (var item in instantiatedGM)
+        {
+            Vector3 rotation = item.instance.transform.localEulerAngles;
+            rotation.x = x;
+            rotation.z = z;
+            item.instance.transform.localEulerAngles = rotation;
+        }
+    }
+
+    private void Update()
+    {
+        SetAngle(rotation.x, rotation.y);
     }
 
     public void SellAll()

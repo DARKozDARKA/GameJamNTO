@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.58
+      value: 10.88
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
@@ -488,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.11
+      value: 31.19
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
@@ -498,17 +498,17 @@ PrefabInstance:
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710677
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
@@ -518,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.00001
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4142486803060437087, guid: e554fef7c04adcb409334188131e7fe5,
         type: 3}
@@ -1631,6 +1631,7 @@ GameObject:
   - component: {fileID: 1642535349}
   - component: {fileID: 1642535351}
   - component: {fileID: 1642535352}
+  - component: {fileID: 1642535353}
   m_Layer: 0
   m_Name: Init
   m_TagString: Untagged
@@ -1695,6 +1696,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d5fef3a1bd2c144bd9b828c857f08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1642535353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642535348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb6d019262b7904faba1a86b76fd418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _names:
+  - James
+  - George
+  - Oliver
+  - Jack
+  - Harry
+  - Jacob
+  - Charley
+  - Thomas
+  - Oscar
+  - Clay
 --- !u!1 &1645266900
 GameObject:
   m_ObjectHideFlags: 0
