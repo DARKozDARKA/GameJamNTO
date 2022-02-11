@@ -9,6 +9,7 @@ public class Init : MonoBehaviour
     [SerializeField] private CameraMover _cameraMover;
     [SerializeField] private InputDistributor _inputDistribitor;
     [SerializeField] private UIManager _UIManager;
+    [SerializeField] private BuyTimer _timer;
     private PlayerInput _playerInput;
 
     private void Start()
@@ -32,6 +33,12 @@ public class Init : MonoBehaviour
         _player.inventory.OnAllItemsRemoved += _UIManager.inventory.RemoveAllItems;
         _player.moneyController.OnMoneyChange += _UIManager.money.ChangeMoney;
         _UIManager.wheel.OnCostEstablished += _player.moneyController.SetStartMoney;
+        _UIManager.wheel.OnTimeEstablished += _timer.InitTimer;
+        _timer.OnTimeChange += _UIManager.timer.ChangeTime;
+
+        _timer.OnTimeRunOut += Lose;
+        _player.moneyController.OnAllMoneyWasted += Win;
+
     }
 
     private void Unsubscribe()
@@ -42,6 +49,21 @@ public class Init : MonoBehaviour
         _player.inventory.OnAllItemsRemoved -= _UIManager.inventory.RemoveAllItems;
         _player.moneyController.OnMoneyChange -= _UIManager.money.ChangeMoney;
         _UIManager.wheel.OnCostEstablished -= _player.moneyController.SetStartMoney;
+        _UIManager.wheel.OnTimeEstablished -= _timer.InitTimer;
+        _timer.OnTimeChange -= _UIManager.timer.ChangeTime;
+        _timer.OnTimeRunOut -= Lose;
+        _player.moneyController.OnAllMoneyWasted -= Win;
+    }
+
+    private void Win()
+    {
+        _timer.OnTimeRunOut -= Lose;
+        _UIManager.screens.SetWinScreen();
+    }
+    private void Lose()
+    {
+        _player.moneyController.OnAllMoneyWasted -= Win;
+        _UIManager.screens.SetLoseScreen();
     }
 
 

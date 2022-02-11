@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     public UIMoney money => _money;
     [SerializeField] private EasyUI.PickerWheelUI.PickerWheel _wheel;
     public EasyUI.PickerWheelUI.PickerWheel wheel => _wheel;
+    [SerializeField] private UITimer _timer;
+    public UITimer timer => _timer;
+    [SerializeField] private UIScreens _screens;
+    public UIScreens screens => _screens;
 
 
 
