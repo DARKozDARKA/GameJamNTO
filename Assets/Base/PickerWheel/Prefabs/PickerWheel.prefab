@@ -440,26 +440,31 @@ MonoBehaviour:
   wheelPieces:
   - Label: Lorem
     amount: 0
+    time: 0
     Chance: 100
     Index: 0
     _weight: 0
   - Label: Iposum
     amount: 0
+    time: 0
     Chance: 100
     Index: 0
     _weight: 0
   - Label: Tupala
     amount: 0
+    time: 0
     Chance: 60
     Index: 0
     _weight: 0
   - Label: Consectetur
     amount: 0
+    time: 0
     Chance: 25
     Index: 0
     _weight: 0
   - Label: Vallar
     amount: 0
+    time: 0
     Chance: 10
     Index: 0
     _weight: 0

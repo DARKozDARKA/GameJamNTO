@@ -14,6 +14,7 @@ public class Enemy : Character
     public string name => _name;
     private Item_Table _huntingItem;
     private bool _isExciting = false;
+    private int _idleTimer = 15;
 
     protected override void Awake()
     {
@@ -34,7 +35,7 @@ public class Enemy : Character
         {
             if (_isExciting)
             {
-                Destroy(gameObject);
+                Die();
             }
             Interact();
         }
@@ -48,6 +49,11 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
+        if (_huntingItem != null)
+        {
+            _huntingItem.OnCancel -= CancelInteract;
+            _huntingItem = null;
+        }
 
         _huntingItem = StallHandler.Instance.GetRandomItem();
 
@@ -59,12 +65,14 @@ public class Enemy : Character
         }
         _huntingItem.OnCancel += CancelInteract;
         _agent.SetDestination(_huntingItem.interactPoint.position);
+        _idleTimer = 15;
     }
 
     private void SetNewCash()
     {
         var newItem = StallHandler.Instance.GetRandomCash().interactPoint.position;
         _agent.SetDestination(newItem);
+        _idleTimer = 15;
     }
 
 
@@ -126,6 +134,7 @@ public class Enemy : Character
     public void StartSeeking()
     {
         SetNewStall();
+        StartCoroutine(StartNewIdleTimer());
     }
 
     private IEnumerator MakeSteps()
@@ -146,5 +155,27 @@ public class Enemy : Character
     {
         _agent.SetDestination(AIHandler.Instance.exit.position);
         _isExciting = true;
+    }
+
+    private void Die()
+    {
+        _agent.isStopped = true;
+        transform.position = new Vector3(9999, 3, 9999);
+    }
+
+    private IEnumerator StartNewIdleTimer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            _idleTimer -= 1;
+            if (_idleTimer <= 0)
+            {
+                if (!_isExciting)
+                    SetNewStall();
+            }
+        }
+
+
     }
 }

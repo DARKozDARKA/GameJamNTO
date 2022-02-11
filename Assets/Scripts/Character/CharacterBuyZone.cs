@@ -12,7 +12,6 @@ public class CharacterBuyZone : MonoBehaviour
             InteractableTable table = other.GetComponent<InteractableTable>();
             if (table.canBeUsed is false)
             {
-                character.CancelInteract();
                 return;
             }
 

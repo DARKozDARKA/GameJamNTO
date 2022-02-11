@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AIHandler : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class AIHandler : MonoBehaviour
         }
         var newNameIndex = Random.Range(0, _names.Count);
         newEnemy.SetName(_names[newNameIndex]);
-        _names.RemoveAt(newNameIndex);
     }
 
     public void StartGame()
@@ -42,11 +42,30 @@ public class AIHandler : MonoBehaviour
         }
     }
 
+    public struct Dude
+    {
+        public string name;
+        public int moneySpend;
+        public Dude(string newName, int newMoney)
+        {
+            name = newName;
+            moneySpend = newMoney;
+        }
+    }
+
     public void PrintAllEnemiesSpendMoney()
     {
+        var newDictionary = new List<Dude>();
         foreach (var item in _enemies)
         {
-            print(item.name + ": " + item.moneyController.spendedMoney);
+            newDictionary.Add(new Dude(item.name, item.moneyController.spendedMoney));
         }
+        newDictionary = newDictionary.OrderBy(pair => pair.moneySpend).ToList();
+        newDictionary.Reverse();
+        foreach (var item in newDictionary)
+        {
+            print(item.name + ": " + item.moneySpend);
+        }
+
     }
 }
