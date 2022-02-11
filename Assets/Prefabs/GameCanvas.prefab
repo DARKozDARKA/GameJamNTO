@@ -1308,6 +1308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loseScreen: {fileID: 2887182087630494380}
   _winScreen: {fileID: 7772132365686790312}
+  _gameScreen: {fileID: 0}
+  _startScreen: {fileID: 0}
 --- !u!1 &8878911001426962497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,8 +1401,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 82771466526599974, guid: 160be82451391f6448834ec65286e007,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 82771466526599974, guid: 160be82451391f6448834ec65286e007,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
+        type: 3}
+      propertyPath: volume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
