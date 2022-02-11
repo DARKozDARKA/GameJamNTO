@@ -9,7 +9,7 @@ public class CameraParameters
 {
     public float angleXZ = 45f;
     public float angleY = 0;
-    public float distance = 30f;
+    public float distance = 10f;
     public float speedOfMove = 25f;
     public float speedOfRotating = 25f;
     [HideInInspector] public Camera camera;

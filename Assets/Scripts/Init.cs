@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InputDistributor))]
 public class Init : MonoBehaviour
 {
     [SerializeField] private PlayerBehaviour _player;
     [SerializeField] private CameraMover _cameraMover;
-    [SerializeField] private InputSystem _input;
+    [SerializeField] private InputDistributor _inputDistribitor;
     [SerializeField] private UIManager _UIManager;
     private PlayerInput _playerInput;
 
@@ -25,7 +26,7 @@ public class Init : MonoBehaviour
     private void Subscribe()
     {
         _UIManager.inventory.player = _player;
-        _playerInput.Init(_player, _input);
+        _playerInput.Init(_player, _inputDistribitor.GetInput());
         _player.inventory.OnAddSucceses += _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure += _UIManager.inventory.AddItemFailed;
         _player.inventory.OnAllItemsRemoved += _UIManager.inventory.RemoveAllItems;

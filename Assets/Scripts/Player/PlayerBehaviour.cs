@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerBehaviour : Character
 {
     private PlayerMover _playerMover;
-    [SerializeField] private Camera _camera;
 
     public override void SetNewCurrentTable(InteractableTable table)
     {

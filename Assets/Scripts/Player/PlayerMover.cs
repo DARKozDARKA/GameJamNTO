@@ -8,7 +8,7 @@ public class PlayerMover : CharacterMover
 {
     //[SerializeField] private float jumpSpeed = 8.0f;
     [SerializeField] private float _gravity = 20.0f;
-    [SerializeField] private Vector3 _cameraRotation;
+    private Transform _cameraTransform;
     private CharacterController _characterController;
     private Vector3 moveDirection = Vector3.zero;
     private float _startHeight;
@@ -18,13 +18,12 @@ public class PlayerMover : CharacterMover
 
     private bool _canMove = true;
 
-
-
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
         _state = MoverState.isMoving;
         _startHeight = transform.position.y;
+        _cameraTransform = Camera.main.transform;
     }
 
     private void Update()
@@ -39,12 +38,12 @@ public class PlayerMover : CharacterMover
         {
             if (_state == MoverState.isMoving)
             {
-                Vector3 forward = Quaternion.AngleAxis(_cameraRotation.y, Vector3.up) * Vector3.forward;
-                Vector3 right = Quaternion.AngleAxis(_cameraRotation.y, Vector3.up) * Vector3.right;
+                Vector3 forward = Quaternion.AngleAxis(_cameraTransform.eulerAngles.y, Vector3.up) * Vector3.forward;
+                Vector3 right = Quaternion.AngleAxis(_cameraTransform.eulerAngles.y, Vector3.up) * Vector3.right;
                 float curSpeedX = _canMove ? _speed * _moveDirection.x : 0;
                 float curSpeedY = _canMove ? _speed * _moveDirection.y : 0;
                 moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-                moveDirection = moveDirection.normalized * _speed;
+                //moveDirection = moveDirection.normalized * _speed;
             }
 
 
@@ -71,10 +70,10 @@ public class PlayerMover : CharacterMover
         //.eulerAngles = new Vector2(0, rotation.y);
     }
 
-    public void SetNewCameraAngle(float angle)
+    /*public void SetNewCameraAngle(float angle)
     {
-        _cameraRotation.y = angle;
-    }
+        _cameraTransform.y = angle;
+    }*/
 
     public void SetMoveDirection(Vector2 moveDirection)
     {

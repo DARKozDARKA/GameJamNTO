@@ -9,7 +9,6 @@ public class Item_Table : InteractableTable
 
 
 
-
     private void Start()
     {
         StallHandler.Instance.AddNewItem(this);
@@ -18,6 +17,7 @@ public class Item_Table : InteractableTable
     public override void Interact()
     {
         if (_canBeUsed is false) return;
+        OnDisableInteractive.Invoke();
         _canBeUsed = false;
         StallHandler.Instance.RemoveItem(this);
     }

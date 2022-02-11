@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour
     protected Character_MoneyController _moneyController;
     public Character_MoneyController moneyController => _moneyController;
     public Inventory inventory => _inventory;
-    [SerializeField] protected InteractableTable _currentSelectedTable;
+    protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
     public virtual void SetNewCurrentTable(InteractableTable table)
     {

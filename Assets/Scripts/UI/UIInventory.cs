@@ -10,7 +10,16 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private Text _inventoryText;
     [SerializeField] private Text _currentCostText;
 
+    private bool startChange;
 
+    private void Update()
+    {
+        if (!startChange)
+        {
+            startChange = true;
+            ChangeCountText();
+        }
+    }
     public void ChangeCountText()
     {
         _inventoryText.text = player.inventory.totalWeight.ToString() + " / " + player.inventory.maxWeight.ToString();
