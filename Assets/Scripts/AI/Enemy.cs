@@ -13,6 +13,7 @@ public class Enemy : Character
     private string _name;
     public string name => _name;
     private Item_Table _huntingItem;
+    private bool _isExciting = false;
 
     protected override void Awake()
     {
@@ -31,6 +32,10 @@ public class Enemy : Character
         if (_canInteract is false) return;
         if (_agent.remainingDistance <= 0.5f)
         {
+            if (_isExciting)
+            {
+                Destroy(gameObject);
+            }
             Interact();
         }
         StartCoroutine(InteractReload());
@@ -43,11 +48,6 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
-        if (_huntingItem != null)
-        {
-            _huntingItem.OnCancel -= CancelInteract;
-            _huntingItem = null;
-        }
 
         _huntingItem = StallHandler.Instance.GetRandomItem();
 
@@ -75,34 +75,6 @@ public class Enemy : Character
 
     public override void Interact()
     {
-        /*
-        if (_currentSelectedTable == null)
-            return;
-
-        if (_noStalls is false)
-        {
-            if (_currentSelectedTable.tag == "Item")
-            {
-                _itemTable = _currentSelectedTable.GetComponent<Item_Table>();
-                if (_inventory.CheckIfCanAdd(_itemTable.scriptableItem))
-                {
-                    _currentSelectedTable.Interact();
-                    if (_inventory.CheckIsFull())
-                        SetNewCash();
-                    else
-                        SetNewStall();
-                }
-
-                else
-                    SetNewCash();
-            }
-        }
-
-
-        else if (_currentSelectedTable.tag == "CashBox")
-            SetNewStall();
-        base.Interact();
-        */
 
         if (_currentSelectedTable == null)
             return;
@@ -128,10 +100,14 @@ public class Enemy : Character
         else if (_currentSelectedTable.tag == "CashBox")
         {
             _inventory.BuyAllItems();
-            if (_noStalls is true) return;
+            if (_noStalls is true)
+            {
+                GoToExit();
+                return;
+
+            }
             SetNewStall();
         }
-
     }
 
     private IEnumerator InteractReload()
@@ -164,5 +140,11 @@ public class Enemy : Character
             yield return new WaitForSeconds(_stepTime * Random.Range(0.9f, 1.1f));
 
         }
+    }
+
+    private void GoToExit()
+    {
+        _agent.SetDestination(AIHandler.Instance.exit.position);
+        _isExciting = true;
     }
 }
