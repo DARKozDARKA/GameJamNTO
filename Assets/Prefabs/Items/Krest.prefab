@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2269433838305509652}
   m_Layer: 9
-  m_Name: Item_Vis
+  m_Name: Krest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
