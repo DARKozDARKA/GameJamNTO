@@ -5,7 +5,7 @@ using UnityEngine;
 public class Table_skinChanger : MonoBehaviour
 {
     public InteractableTable table;
-
+    public GameObject modelGM;
     public Material normalMat, selectedMat, buyedMat;
     private Renderer render;
 
@@ -29,6 +29,8 @@ public class Table_skinChanger : MonoBehaviour
     }
     public void SetBuyed()
     {
+        table.outlineTrigger.SetChoose(false);
+        modelGM.SetActive(false);
         render.material = buyedMat;
     }
 }

@@ -302,6 +302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineTrigger: {fileID: 4142486802856261950}
   _interactPoint: {fileID: 4316041036180318345}
+  OnDisableInteractive:
+    m_PersistentCalls:
+      m_Calls: []
   scriptableItem: {fileID: 11400000, guid: 43bd05c5b38b2f644b16cfad286467d9, type: 2}
 --- !u!114 &3389287784506132393
 MonoBehaviour:
@@ -316,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   table: {fileID: 7508796384320174445}
+  modelGM: {fileID: 6255358092077454532}
   normalMat: {fileID: 2100000, guid: e2b76ee56da8d9745b603d3fa133b76e, type: 2}
   selectedMat: {fileID: 2100000, guid: 2061b4a363a58954ca5e6ecf67c7b6ac, type: 2}
   buyedMat: {fileID: 2100000, guid: 03bc8f07c4e194844a9c878ff309c119, type: 2}
