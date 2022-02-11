@@ -41,6 +41,11 @@ public class PlayerBehaviour : Character
         _playerMover.SetMoveDirection(moveDirection);
     }
 
+    public void DisableMovement()
+    {
+        _playerMover.DisableMovement();
+    }
+
 
 
 

@@ -9,6 +9,8 @@ public class Enemy : Character
     private NavMeshAgent _agent;
     private bool _canInteract = true;
     private bool _noStalls = false;
+    private string _name;
+    public string name => _name;
 
     protected override void Awake()
     {
@@ -18,8 +20,7 @@ public class Enemy : Character
 
     private void Start()
     {
-        StartCoroutine(StartSeeking());
-
+        AIHandler.Instance.AddNewEnemy(this);
     }
 
     private void Update()
@@ -30,6 +31,11 @@ public class Enemy : Character
             Interact();
         }
         StartCoroutine(InteractReload());
+    }
+
+    public void SetName(string newName)
+    {
+        _name = newName;
     }
 
     private void SetNewStall()
@@ -124,13 +130,13 @@ public class Enemy : Character
         _canInteract = true;
     }
 
-    private IEnumerator StartSeeking()
+
+    public override void CancelInteract()
     {
-        yield return new WaitForEndOfFrame();
         SetNewStall();
     }
 
-    public override void CancelInteract()
+    public void StartSeeking()
     {
         SetNewStall();
     }

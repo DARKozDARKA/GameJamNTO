@@ -80,4 +80,9 @@ public class PlayerMover : CharacterMover
         _moveDirection = moveDirection;
     }
 
+    public void DisableMovement()
+    {
+        _canMove = false;
+    }
+
 }
