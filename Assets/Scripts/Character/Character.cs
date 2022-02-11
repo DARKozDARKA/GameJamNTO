@@ -11,17 +11,21 @@ public abstract class Character : MonoBehaviour
     public Inventory inventory => _inventory;
     protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
+
     public virtual void SetNewCurrentTable(InteractableTable table)
     {
         if (_currentSelectedTable != null)
             DeleteCurrentItem();
 
+
         _currentSelectedTable = table;
+        _currentSelectedTable.OnCancel += DeleteCurrentItem;
     }
     public virtual void DeleteCurrentItem()
     {
         if (_currentSelectedTable == null)
             return;
+        _currentSelectedTable.OnCancel -= DeleteCurrentItem;
         _currentSelectedTable = null;
     }
 

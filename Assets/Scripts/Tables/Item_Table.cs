@@ -20,6 +20,8 @@ public class Item_Table : InteractableTable
         OnDisableInteractive.Invoke();
         _canBeUsed = false;
         StallHandler.Instance.RemoveItem(this);
+        OnCancel?.Invoke();
+        OnDisableInteractive.RemoveAllListeners();
     }
 
 
