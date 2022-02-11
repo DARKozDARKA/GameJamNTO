@@ -62,6 +62,7 @@ namespace EasyUI.PickerWheelUI
         private List<int> nonZeroChancesIndices = new List<int>();
         public System.Action<int> OnCostEstablished;
         public System.Action<int> OnTimeEstablished;
+        public System.Action OnSpinEnded;
 
         private void Start()
         {
@@ -90,6 +91,7 @@ namespace EasyUI.PickerWheelUI
             print(System.Convert.ToInt32(piece.amount));
             OnCostEstablished?.Invoke(piece.amount);
             OnTimeEstablished?.Invoke(piece.time);
+            OnSpinEnded?.Invoke();
 
             Destroy(gameObject);
         }

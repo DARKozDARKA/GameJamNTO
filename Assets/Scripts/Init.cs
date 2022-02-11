@@ -12,6 +12,7 @@ public class Init : MonoBehaviour
     [SerializeField] private BuyTimer _timer;
     private PlayerInput _playerInput;
 
+
     private void Start()
     {
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);
@@ -27,12 +28,13 @@ public class Init : MonoBehaviour
     private void Subscribe()
     {
         _UIManager.inventory.player = _player;
-        _playerInput.Init(_player, _inputDistribitor.GetInput());
+
         _player.inventory.OnAddSucceses += _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure += _UIManager.inventory.AddItemFailed;
         _player.inventory.OnAllItemsRemoved += _UIManager.inventory.RemoveAllItems;
         _player.moneyController.OnMoneyChange += _UIManager.money.ChangeMoney;
         _UIManager.wheel.OnCostEstablished += _player.moneyController.SetStartMoney;
+        _UIManager.wheel.OnSpinEnded += StartGame;
         _UIManager.wheel.OnTimeEstablished += _timer.InitTimer;
         _timer.OnTimeChange += _UIManager.timer.ChangeTime;
 
@@ -43,6 +45,7 @@ public class Init : MonoBehaviour
 
     private void Unsubscribe()
     {
+
         _playerInput.Unsubscribe();
         _player.inventory.OnAddSucceses -= _UIManager.inventory.AddItemSuccusfully;
         _player.inventory.OnAddFailure -= _UIManager.inventory.AddItemFailed;
@@ -50,20 +53,30 @@ public class Init : MonoBehaviour
         _player.moneyController.OnMoneyChange -= _UIManager.money.ChangeMoney;
         _UIManager.wheel.OnCostEstablished -= _player.moneyController.SetStartMoney;
         _UIManager.wheel.OnTimeEstablished -= _timer.InitTimer;
+        _UIManager.wheel.OnSpinEnded -= StartGame;
         _timer.OnTimeChange -= _UIManager.timer.ChangeTime;
+
         _timer.OnTimeRunOut -= Lose;
         _player.moneyController.OnAllMoneyWasted -= Win;
+    }
+
+    private void StartGame()
+    {
+        _playerInput.Init(_player, _inputDistribitor.GetInput());
+        _UIManager.screens.SetGameScreen();
     }
 
     private void Win()
     {
         _timer.OnTimeRunOut -= Lose;
         _UIManager.screens.SetWinScreen();
+        _playerInput.Unsubscribe();
     }
     private void Lose()
     {
         _player.moneyController.OnAllMoneyWasted -= Win;
         _UIManager.screens.SetLoseScreen();
+        _playerInput.Unsubscribe();
     }
 
 
