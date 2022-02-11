@@ -12,6 +12,7 @@ public class Enemy : Character
     private bool _noStalls = false;
     private string _name;
     public string name => _name;
+    private Item_Table _huntingItem;
 
     protected override void Awake()
     {
@@ -42,14 +43,22 @@ public class Enemy : Character
 
     private void SetNewStall()
     {
-        var newItem = StallHandler.Instance.GetRandomItem();
-        if (newItem == null)
+        if (_huntingItem != null)
+        {
+            _huntingItem.OnCancel -= CancelInteract;
+            _huntingItem = null;
+        }
+
+        _huntingItem = StallHandler.Instance.GetRandomItem();
+
+        if (_huntingItem == null)
         {
             SetNewCash();
             _noStalls = true;
             return;
         }
-        _agent.SetDestination(newItem.interactPoint.position);
+        _huntingItem.OnCancel += CancelInteract;
+        _agent.SetDestination(_huntingItem.interactPoint.position);
     }
 
     private void SetNewCash()
