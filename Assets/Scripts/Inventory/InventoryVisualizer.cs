@@ -50,7 +50,7 @@ public class InventoryVisualizer : MonoBehaviour
             instant.instance.transform.SetParent(instantiatedGM[instantiatedGM.Count - 1].instance.transform);
         Vector3 localPos = instant.instance.transform.localPosition;
         if (instantiatedGM.Count > 0) 
-            localPos.y += 1;
+            localPos.y += instantiatedGM[instantiatedGM.Count - 1].reference.hightOfHeadPrefab;
         instant.instance.transform.localPosition = localPos;
         instantiatedGM.Add(instant);
     }

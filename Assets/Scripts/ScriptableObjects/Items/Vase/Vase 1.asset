@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dfa220019fe124396c7cd71178a557, type: 3}
-  m_Name: Coffee 1
+  m_Name: Vase 1
   m_EditorClassIdentifier: 
   instanceSize: {x: 1, y: 1}
   weight: 1
-  cost: 400
-  headPrefab: {fileID: 352837150973882500, guid: 407c19788ff01a842ace8894d681412c,
+  cost: 120
+  headPrefab: {fileID: 4770677766326336951, guid: 364e140399ac28942b778d76ef269775,
     type: 3}
   hightOfHeadPrefab: 0.75

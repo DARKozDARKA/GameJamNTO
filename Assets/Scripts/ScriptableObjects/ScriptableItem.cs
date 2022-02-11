@@ -8,7 +8,6 @@ public class ScriptableItem : ScriptableObject
     public Vector2Int instanceSize;
     public int weight;
     public int cost;
-    public GameObject prefab;
     public GameObject headPrefab;
     public float hightOfHeadPrefab;
 }
