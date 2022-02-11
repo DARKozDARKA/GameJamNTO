@@ -109,7 +109,7 @@ public class Enemy : Character
                     SetNewCash();
                 else
                     SetNewStall();
-                DeleteCurrentItem();
+                DeleteAllCurrentItems();
 
                 return;
             }
