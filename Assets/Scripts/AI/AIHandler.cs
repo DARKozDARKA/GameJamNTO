@@ -25,6 +25,7 @@ public class AIHandler : MonoBehaviour
         if (_names.Count == 0)
         {
             newEnemy.SetName("dude");
+            return;
         }
         var newNameIndex = Random.Range(0, _names.Count);
         newEnemy.SetName(_names[newNameIndex]);
