@@ -17,7 +17,7 @@ public class PlayerBehaviour : Character
     {
         if (_currentSelectedTable == null)
             return;
-        if(_currentSelectedTable.canBeUsed)
+        if (_currentSelectedTable.canBeUsed)
             _currentSelectedTable.outlineTrigger.SetChoose(false);
         base.DeleteCurrentItem();
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public abstract class InteractableTable : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public abstract class InteractableTable : MonoBehaviour
     public Transform interactPoint => _interactPoint;
 
     public UnityEvent OnDisableInteractive;
+    public Action OnCancel;
     public abstract void Interact();
 
     protected bool _canBeUsed = true;
