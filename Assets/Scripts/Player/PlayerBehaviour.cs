@@ -10,13 +10,15 @@ public class PlayerBehaviour : Character
     public override void SetNewCurrentTable(InteractableTable table)
     {
         base.SetNewCurrentTable(table);
-        _currentSelectedTable.outlineTrigger.SetChoose(true);
+        if (_currentSelectedTable.canBeUsed)
+            _currentSelectedTable.outlineTrigger.SetChoose(true);
     }
     public override void DeleteCurrentItem()
     {
         if (_currentSelectedTable == null)
             return;
-        _currentSelectedTable.outlineTrigger.SetChoose(false);
+        if(_currentSelectedTable.canBeUsed)
+            _currentSelectedTable.outlineTrigger.SetChoose(false);
         base.DeleteCurrentItem();
     }
     protected override void Awake()
