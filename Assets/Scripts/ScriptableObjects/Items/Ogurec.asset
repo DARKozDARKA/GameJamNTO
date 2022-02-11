@@ -16,3 +16,6 @@ MonoBehaviour:
   weight: 2
   cost: 200
   prefab: {fileID: 0}
+  headPrefab: {fileID: 8835141788954124258, guid: 74811b5db2177694bb146446edbfd370,
+    type: 3}
+  hightOfHeadPrefab: 1
