@@ -28,11 +28,18 @@ public class PlayerBehaviour : Character
 
         gameObject.tag = "Player";
         gameObject.layer = 10;
+        _playerMover.OnStep += _soundPlayer.PlayOneStep;
+    }
+
+    private void OnDestroy()
+    {
+        _playerMover.OnStep -= _soundPlayer.PlayOneStep;
     }
 
     public override void AddItem(Item_Table newItem)
     {
         _inventory.AddItem(newItem.scriptableItem);
+        _soundPlayer.PlayGetItem();
     }
 
 
@@ -44,6 +51,12 @@ public class PlayerBehaviour : Character
     public void DisableMovement()
     {
         _playerMover.DisableMovement();
+    }
+
+    public override void BuyAllItems()
+    {
+        base.BuyAllItems();
+        _soundPlayer.PlayCashOut();
     }
 
 

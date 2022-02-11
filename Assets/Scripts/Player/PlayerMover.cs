@@ -8,6 +8,7 @@ public class PlayerMover : CharacterMover
 {
     //[SerializeField] private float jumpSpeed = 8.0f;
     [SerializeField] private float _gravity = 20.0f;
+    [SerializeField] private float _stepPerTime = 0.5f;
     private Transform _cameraTransform;
     private CharacterController _characterController;
     private Vector3 moveDirection = Vector3.zero;
@@ -17,6 +18,8 @@ public class PlayerMover : CharacterMover
     private Vector2 _moveDirection;
 
     private bool _canMove = true;
+    public Action OnStep;
+    [SerializeField] private bool _isMoving = false;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class PlayerMover : CharacterMover
         _state = MoverState.isMoving;
         _startHeight = transform.position.y;
         _cameraTransform = Camera.main.transform;
+        StartCoroutine(MakeSteps());
     }
 
     private void Update()
@@ -78,11 +82,26 @@ public class PlayerMover : CharacterMover
     public void SetMoveDirection(Vector2 moveDirection)
     {
         _moveDirection = moveDirection;
+        _isMoving = moveDirection != Vector2.zero;
+
     }
 
     public void DisableMovement()
     {
         _canMove = false;
+    }
+
+    private IEnumerator MakeSteps()
+    {
+        while (true)
+        {
+            if (_isMoving)
+                OnStep?.Invoke();
+
+            yield return new WaitForSeconds(_stepPerTime);
+
+        }
+
     }
 
 }

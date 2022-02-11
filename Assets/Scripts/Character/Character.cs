@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-[RequireComponent(typeof(Inventory), typeof(Character_MoneyController))]
+[RequireComponent(typeof(Inventory), typeof(Character_MoneyController), typeof(CharacterSoundPlayer))]
 public abstract class Character : MonoBehaviour
 {
     protected Inventory _inventory;
@@ -11,6 +11,7 @@ public abstract class Character : MonoBehaviour
     public Inventory inventory => _inventory;
     protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
+    protected CharacterSoundPlayer _soundPlayer;
 
     public virtual void SetNewCurrentTable(InteractableTable table)
     {
@@ -32,6 +33,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void Awake()
     {
         _moneyController = GetComponent<Character_MoneyController>();
+        _soundPlayer = GetComponent<CharacterSoundPlayer>();
         _inventory = GetComponent<Inventory>();
         _inventory.SetCharacter(this);
     }
@@ -57,6 +59,7 @@ public abstract class Character : MonoBehaviour
         else if (_currentSelectedTable.tag == "CashBox")
         {
             _inventory.BuyAllItems();
+            BuyAllItems();
         }
     }
 
@@ -67,7 +70,7 @@ public abstract class Character : MonoBehaviour
 
     public virtual void BuyAllItems()
     {
-        inventory.BuyAllItems();
+
     }
 
     public virtual void CancelInteract()

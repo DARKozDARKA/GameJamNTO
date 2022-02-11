@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : Character
 {
+    [SerializeField] private float _stepTime;
     private NavMeshAgent _agent;
     private bool _canInteract = true;
     private bool _noStalls = false;
@@ -21,6 +22,7 @@ public class Enemy : Character
     private void Start()
     {
         AIHandler.Instance.AddNewEnemy(this);
+        StartCoroutine(MakeSteps());
     }
 
     private void Update()
@@ -139,5 +141,19 @@ public class Enemy : Character
     public void StartSeeking()
     {
         SetNewStall();
+    }
+
+    private IEnumerator MakeSteps()
+    {
+        while (true)
+        {
+            if (_agent.velocity.magnitude != 0)
+            {
+                _soundPlayer.PlayOneStep();
+
+            }
+            yield return new WaitForSeconds(_stepTime * Random.Range(0.9f, 1.1f));
+
+        }
     }
 }
