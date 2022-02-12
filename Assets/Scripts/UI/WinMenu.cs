@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+
 
 public class WinMenu : MonoBehaviour
 {
-    [SerializeField] private Text _text;
+    [SerializeField] private TextMeshProUGUI _text;
 
     public void SetText(int money)
     {
