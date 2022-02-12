@@ -7,8 +7,7 @@ public class UIInventory : MonoBehaviour
 {
     public Character player;
     // Базовая реализация
-    [SerializeField] private Text _inventoryText;
-    [SerializeField] private Text _currentCostText;
+    [SerializeField] private List<Hand> _hands;
 
     private bool startChange;
 
@@ -22,8 +21,21 @@ public class UIInventory : MonoBehaviour
     }
     public void ChangeCountText()
     {
-        _inventoryText.text = player.inventory.totalWeight.ToString() + " / " + player.inventory.maxWeight.ToString();
-        _currentCostText.text = player.inventory.currentCost.ToString();
+        int i = 1;
+        foreach (var item in _hands)
+        {
+            if (i <= player.inventory.totalWeight)
+            {
+                item.SetAvalible(false);
+            }
+            else
+            {
+                item.SetAvalible(true);
+            }
+            i++;
+        }
+        //_inventoryText.text = player.inventory.totalWeight.ToString() + " / " + player.inventory.maxWeight.ToString();
+        //_currentCostText.text = player.inventory.currentCost.ToString();
     }
     public void AddItemSuccusfully(ScriptableItem newItem)
     {
