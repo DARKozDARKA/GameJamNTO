@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4583237555902223678}
   - component: {fileID: 4583237555902223672}
-  - component: {fileID: 4583237555902223673}
   - component: {fileID: 4583237555902223675}
+  - component: {fileID: 5536429516182682210}
   m_Layer: 8
   m_Name: BuyZone
   m_TagString: BuyZone
@@ -45,19 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b11d212a6c09149b504bfd6b3b756d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &4583237555902223673
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4583237555902223679}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  character: {fileID: 0}
 --- !u!54 &4583237555902223675
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,3 +62,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &5536429516182682210
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583237555902223679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 3.7366295
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4435482, z: 0}
