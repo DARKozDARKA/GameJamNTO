@@ -101,6 +101,11 @@ public class PlayerMover : CharacterMover
         _canMove = false;
     }
 
+    public void SetActiveMovement(bool isActive)
+    {
+        _canMove = isActive;
+    }
+
     private IEnumerator MakeSteps()
     {
         while (true)

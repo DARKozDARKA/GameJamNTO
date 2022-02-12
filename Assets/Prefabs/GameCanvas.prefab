@@ -1872,7 +1872,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[1].time
-      value: 120
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -1906,7 +1906,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[5].time
-      value: 60
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -1940,7 +1940,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[9].time
-      value: 180
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2010,7 +2010,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[1].Label
-      value: 2000$
+      value: 20000$
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2210,7 +2210,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[5].Label
-      value: 1000$
+      value: 10000$
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2230,7 +2230,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[9].Label
-      value: 3000$
+      value: 4000$
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2300,7 +2300,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[1].amount
-      value: 2000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2500,7 +2500,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[5].amount
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2510,7 +2510,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[6].Chance
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
@@ -2545,7 +2545,7 @@ PrefabInstance:
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}
       propertyPath: wheelPieces.Array.data[9].amount
-      value: 3000
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 114361574848870256, guid: 160be82451391f6448834ec65286e007,
         type: 3}

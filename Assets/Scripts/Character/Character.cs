@@ -16,6 +16,7 @@ public abstract class Character : MonoBehaviour
     protected InteractableTable _currentSelectedTable;
     protected Item_Table _itemTable;
     protected CharacterSoundPlayer _soundPlayer;
+    protected Action<bool> OnCashing;
 
     public virtual void SetNewCurrentTable(InteractableTable table)
     {
@@ -23,7 +24,7 @@ public abstract class Character : MonoBehaviour
 
 
         _currentSelectedTable = _currentSelectedTables[_currentSelectedTables.Count - 1];
-        _currentSelectedTables[_currentSelectedTables.Count - 1].OnCancel += DeleteAllCurrentItems;
+        _currentSelectedTables[_currentSelectedTables.Count - 1].OnCancel += DeleteCurrentItem;
     }
     public virtual void DeleteCurrentItem(InteractableTable table)
     {
@@ -37,14 +38,20 @@ public abstract class Character : MonoBehaviour
         _currentSelectedTable = _currentSelectedTables[_currentSelectedTables.Count - 1];
     }
 
-    protected virtual void DeleteAllCurrentItems()
+    protected virtual void DeleteCurrentItem()
     {
-        for (int i = 0; i < _currentSelectedTables.Count; i++)
+        if (_currentSelectedTable != null)
         {
-            _currentSelectedTables[i].OnCancel -= DeleteAllCurrentItems;
+            _currentSelectedTable.OnCancel -= DeleteCurrentItem;
+            _currentSelectedTables.Remove(_currentSelectedTable);
         }
-        _currentSelectedTables.Clear();
-        _currentSelectedTable = null;
+
+        if (_currentSelectedTables.Count == 0)
+        {
+            _currentSelectedTable = null;
+            return;
+        }
+        _currentSelectedTable = _currentSelectedTables[_currentSelectedTables.Count - 1];
     }
 
     protected virtual void Awake()
@@ -70,17 +77,17 @@ public abstract class Character : MonoBehaviour
 
                 AddItem(_itemTable);
                 _currentSelectedTable.Interact();
-                DeleteAllCurrentItems();
+                //DeleteCurrentItem();
                 return;
             }
             else
             {
-                print("F");
                 _soundPlayer.PlayError();
             }
         }
         else if (_currentSelectedTable.tag == "CashBox")
         {
+            if (_inventory.CheckIfEmpty()) return;
             _currentSelectedTable.Interact();
             _inventory.BuyAllItems();
             BuyAllItems();
@@ -100,6 +107,11 @@ public abstract class Character : MonoBehaviour
     public virtual void CancelInteract()
     {
         // Pass
+    }
+
+    public void SetIsCashing(bool isCashing)
+    {
+        OnCashing?.Invoke(!isCashing);
     }
 
 }

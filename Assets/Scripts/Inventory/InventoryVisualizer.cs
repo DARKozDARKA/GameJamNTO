@@ -49,7 +49,7 @@ public class InventoryVisualizer : MonoBehaviour
         else
             instant.instance.transform.SetParent(instantiatedGM[instantiatedGM.Count - 1].instance.transform);
         Vector3 localPos = instant.instance.transform.localPosition;
-        if (instantiatedGM.Count > 0) 
+        if (instantiatedGM.Count > 0)
             localPos.y += instantiatedGM[instantiatedGM.Count - 1].reference.hightOfHeadPrefab;
         instant.instance.transform.localPosition = localPos;
         instantiatedGM.Add(instant);
@@ -68,12 +68,13 @@ public class InventoryVisualizer : MonoBehaviour
 
     public void SellAll()
     {
-        if(!isSelling)
+        if (!isSelling)
             StartCoroutine(Selling());
     }
 
     private IEnumerator Selling()
     {
+        character.SetIsCashing(true);
         isSelling = true;
         for (int i = instantiatedGM.Count - 1; i >= 0; i--)
         {
@@ -82,6 +83,7 @@ public class InventoryVisualizer : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
         }
         isSelling = false;
+        character.SetIsCashing(false);
     }
 
     private float CulculateHight()

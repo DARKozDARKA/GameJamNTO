@@ -9,6 +9,9 @@ public class PlayerBehaviour : Character
 
     public override void SetNewCurrentTable(InteractableTable table)
     {
+        if (_currentSelectedTable != null)
+            if (_currentSelectedTable.canBeUsed)
+                _currentSelectedTable.outlineTrigger.SetChoose(false);
         base.SetNewCurrentTable(table);
         if (_currentSelectedTable.canBeUsed)
             _currentSelectedTable.outlineTrigger.SetChoose(true);
@@ -20,6 +23,20 @@ public class PlayerBehaviour : Character
         if (_currentSelectedTable.canBeUsed)
             _currentSelectedTable.outlineTrigger.SetChoose(false);
         base.DeleteCurrentItem(table);
+        if (_currentSelectedTable != null)
+            if (_currentSelectedTable.canBeUsed)
+                _currentSelectedTable.outlineTrigger.SetChoose(true);
+    }
+    protected override void DeleteCurrentItem()
+    {
+        if (_currentSelectedTable == null)
+            return;
+        if (_currentSelectedTable.canBeUsed)
+            _currentSelectedTable.outlineTrigger.SetChoose(false);
+        base.DeleteCurrentItem();
+        if (_currentSelectedTable != null)
+            if (_currentSelectedTable.canBeUsed)
+                _currentSelectedTable.outlineTrigger.SetChoose(true);
     }
     protected override void Awake()
     {
@@ -29,11 +46,13 @@ public class PlayerBehaviour : Character
         gameObject.tag = "Player";
         gameObject.layer = 10;
         _playerMover.OnStep += _soundPlayer.PlayOneStep;
+        OnCashing += _playerMover.SetActiveMovement;
     }
 
     private void OnDestroy()
     {
         _playerMover.OnStep -= _soundPlayer.PlayOneStep;
+
     }
 
     public override void AddItem(Item_Table newItem)
@@ -50,6 +69,7 @@ public class PlayerBehaviour : Character
 
     public void DisableMovement()
     {
+        OnCashing -= _playerMover.SetActiveMovement;
         _playerMover.DisableMovement();
     }
 
