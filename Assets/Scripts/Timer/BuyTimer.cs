@@ -9,9 +9,9 @@ public class BuyTimer : MonoBehaviour
     private int _currentTime;
     public Action<int, int> OnTimeChange;
     public Action OnTimeRunOut;
-
     public void InitTimer(int maxTime)
     {
+        _maxTime = 60;
         _maxTime = maxTime;
         _currentTime = maxTime;
         OnTimeChange?.Invoke(_currentTime, _maxTime);

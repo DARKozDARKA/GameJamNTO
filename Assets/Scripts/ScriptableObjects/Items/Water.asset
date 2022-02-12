@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instanceSize: {x: 1, y: 1}
   weight: 1
-  cost: 1
+  cost: 250
   headPrefab: {fileID: 1614068475854959590, guid: a27f2b841c727a44ba32e4373a43b4bb,
     type: 3}
   hightOfHeadPrefab: 0.6

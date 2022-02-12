@@ -24,7 +24,7 @@ public class Item_Table : InteractableTable
         var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, _itemPoint.rotation);
         newModel.transform.parent = transform;
         OnModelSet?.Invoke(newModel);
-        _text.text = scriptableItem.cost.ToString();
+        _text.text = scriptableItem.cost.ToString() + "$";
     }
 
     public override void Interact()
