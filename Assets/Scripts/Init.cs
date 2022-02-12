@@ -11,6 +11,7 @@ public class Init : MonoBehaviour
     [SerializeField] private InputDistributor _inputDistribitor;
     [SerializeField] private UIManager _UIManager;
     [SerializeField] private BuyTimer _timer;
+    [SerializeField] private MusicPlayer _music;
     private PlayerInput _playerInput;
     public UnityEvent onStartGame;
 
@@ -38,10 +39,10 @@ public class Init : MonoBehaviour
         _UIManager.wheel.OnCostEstablished += _player.moneyController.SetStartMoney;
         _UIManager.wheel.OnSpinEnded += StartGame;
         _UIManager.wheel.OnTimeEstablished += _timer.InitTimer;
+        _UIManager.wheel.OnSpinStarted += StartSpin;
         _timer.OnTimeChange += _UIManager.timer.ChangeTime;
 
         _timer.OnTimeRunOut += Win;
-        _player.moneyController.OnAllMoneyWasted += Win;
 
     }
 
@@ -56,10 +57,15 @@ public class Init : MonoBehaviour
         _UIManager.wheel.OnCostEstablished -= _player.moneyController.SetStartMoney;
         _UIManager.wheel.OnTimeEstablished -= _timer.InitTimer;
         _UIManager.wheel.OnSpinEnded -= StartGame;
+        _UIManager.wheel.OnSpinStarted -= StartSpin;
         _timer.OnTimeChange -= _UIManager.timer.ChangeTime;
 
         _timer.OnTimeRunOut -= Win;
-        _player.moneyController.OnAllMoneyWasted -= Win;
+    }
+
+    private void StartSpin()
+    {
+        _music.QuietMenuMusic();
     }
 
     private void StartGame()
@@ -67,6 +73,7 @@ public class Init : MonoBehaviour
         _playerInput.Init(_player, _inputDistribitor.GetInput());
         _UIManager.screens.SetGameScreen();
         AIHandler.Instance.StartGame();
+        _music.StartGameMusic();
 
     }
 
