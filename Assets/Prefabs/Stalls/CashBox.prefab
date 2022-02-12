@@ -112,6 +112,7 @@ Transform:
   m_Children:
   - {fileID: 5404872430923417193}
   - {fileID: 3747940346027144014}
+  - {fileID: 6647940161236971944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineTrigger: {fileID: 3747940346027144001}
-  _interactPoint: {fileID: 3747940346116045344}
+  _interactPoint: {fileID: 6647940161236971944}
   OnDisableInteractive:
     m_PersistentCalls:
       m_Calls: []
@@ -203,6 +204,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5665842162791084582, guid: c00c4f246b94286468b6a341b146c141, type: 3}
+--- !u!1 &7797920061101202752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6647940161236971944}
+  m_Layer: 9
+  m_Name: Interact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6647940161236971944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797920061101202752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.78, y: 0, z: 0.233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3747940346116045344}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6589664901237941851
 PrefabInstance:
   m_ObjectHideFlags: 0
