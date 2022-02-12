@@ -6,6 +6,7 @@ using System;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMover : CharacterMover
 {
+    public GameObject humanRotator;
     //[SerializeField] private float jumpSpeed = 8.0f;
     [SerializeField] private WalkEffect _walkEffect;
     [SerializeField] private float _gravity = 20.0f;
@@ -23,6 +24,7 @@ public class PlayerMover : CharacterMover
     public Action OnStep;
     [SerializeField] private bool _isMoving = false;
 
+    private GameObject napr;
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -30,6 +32,8 @@ public class PlayerMover : CharacterMover
         _startHeight = transform.position.y;
         _cameraTransform = Camera.main.transform;
         StartCoroutine(MakeSteps());
+        napr = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        napr.GetComponent<Collider>().enabled = false;
     }
 
     private void Update()
@@ -68,7 +72,9 @@ public class PlayerMover : CharacterMover
         }
 
         moveDirection.y -= _gravity * Time.deltaTime;
-
+        Vector3 pos = transform.position + moveDirection.normalized * 10;
+        pos.y = humanRotator.transform.position.y;
+        humanRotator.transform.LookAt(pos);
         _characterController.Move(moveDirection * Time.deltaTime);
 
         if (!_canMove) return;

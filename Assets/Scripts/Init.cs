@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(InputDistributor))]
 public class Init : MonoBehaviour
@@ -11,7 +12,7 @@ public class Init : MonoBehaviour
     [SerializeField] private UIManager _UIManager;
     [SerializeField] private BuyTimer _timer;
     private PlayerInput _playerInput;
-
+    public UnityEvent onStartGame;
 
     private void Start()
     {
