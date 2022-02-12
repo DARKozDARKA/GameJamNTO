@@ -63,6 +63,7 @@ namespace EasyUI.PickerWheelUI
         public System.Action<int> OnCostEstablished;
         public System.Action<int> OnTimeEstablished;
         public System.Action OnSpinEnded;
+        public System.Action OnSpinStarted;
 
         private void Start()
         {
@@ -84,6 +85,7 @@ namespace EasyUI.PickerWheelUI
 
 
             Spin();
+            OnSpinStarted?.Invoke();
         }
 
         private void PrintWin(WheelPiece piece)
