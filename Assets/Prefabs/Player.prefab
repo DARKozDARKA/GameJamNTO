@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 7758940545202702636}
   - component: {fileID: 4721204687680537053}
   - component: {fileID: 1254685976190799081}
+  - component: {fileID: 591553307958292977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -435,10 +436,11 @@ AudioSource:
   m_GameObject: {fileID: 3073826589686186527}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 501c6c726244bfd4a90b44ac5f3c5ffe,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.111
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -535,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
-  humanRotator: {fileID: 0}
+  humanRotator: {fileID: 2286863704076496644}
   _walkEffect: {fileID: 4721204687680537053}
   _gravity: 20
   _stepPerTime: 0.5
@@ -632,6 +634,14 @@ CapsuleCollider:
   m_Height: 3.7690992
   m_Direction: 1
   m_Center: {x: 0, y: 1.3845496, z: 0}
+--- !u!81 &591553307958292977
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073826589686186527}
+  m_Enabled: 1
 --- !u!1 &3104835877731392605
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public UITimer timer => _timer;
     [SerializeField] private UIScreens _screens;
     public UIScreens screens => _screens;
+    [SerializeField] private WinMenu _winMenu;
+    public WinMenu winMenu => _winMenu;
 
 
 

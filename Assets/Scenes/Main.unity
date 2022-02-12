@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4073,12 +4073,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7f02eab17f3e64f849cfed52496923, type: 3}
---- !u!1 &1342127189 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2286863704076496644, guid: bf34a98718b12b244bcde16d181a5aa1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3073826588738263609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1345915390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6965,20 +6959,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7f02eab17f3e64f849cfed52496923, type: 3}
---- !u!1 &1918683878 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3073826589686186527, guid: bf34a98718b12b244bcde16d181a5aa1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3073826588738263609}
-  m_PrefabAsset: {fileID: 0}
---- !u!81 &1918683879
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918683878}
-  m_Enabled: 1
 --- !u!1001 &1922146764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7533,7 +7513,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3073826588738263609}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918683878}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce632662283810c449dd6c0a1e5eb42e, type: 3}
@@ -8733,17 +8713,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1836200127419515633, guid: bf34a98718b12b244bcde16d181a5aa1,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1836200127419515633, guid: bf34a98718b12b244bcde16d181a5aa1,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 501c6c726244bfd4a90b44ac5f3c5ffe,
-        type: 2}
     - target: {fileID: 2958725137205526599, guid: bf34a98718b12b244bcde16d181a5aa1,
         type: 3}
       propertyPath: m_RootOrder
@@ -8779,11 +8748,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3073826589686186513, guid: bf34a98718b12b244bcde16d181a5aa1,
-        type: 3}
-      propertyPath: humanRotator
-      value: 
-      objectReference: {fileID: 1342127189}
     - target: {fileID: 3073826589686186513, guid: bf34a98718b12b244bcde16d181a5aa1,
         type: 3}
       propertyPath: _cameraTransform
