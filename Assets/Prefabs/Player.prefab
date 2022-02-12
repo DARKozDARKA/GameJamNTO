@@ -314,7 +314,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7d0d1f026117f5f4c921479b41407a7f, type: 3}
   _cashOut:
   - {fileID: 8300000, guid: b952755f71f4d9949aa108cbb3a1b0f4, type: 3}
-  - {fileID: 8300000, guid: 0b643a7cb05741942b0bed7740761a54, type: 3}
   - {fileID: 8300000, guid: b6229ddc9fc576b428f832cd6a9a0edf, type: 3}
   _errors:
   - {fileID: 8300000, guid: 36f4e1af667b5314a9493cd487aca1c1, type: 3}
