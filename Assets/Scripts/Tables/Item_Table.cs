@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Item_Table : InteractableTable
 {
     [SerializeField] private ScriptableItem[] scriptableItems;
     [SerializeField] private Transform _itemPoint;
     [SerializeField] private GameObject _stoleEffect;
+    [SerializeField] private float _tableHeight = 1f;
     public ScriptableItem scriptableItem;
     public int weight => scriptableItem.weight;
     public Action<GameObject> OnModelSet;
+    [SerializeField] private Text _text;
 
 
 
@@ -21,6 +24,7 @@ public class Item_Table : InteractableTable
         var newModel = Instantiate(scriptableItem.headPrefab, _itemPoint.position, _itemPoint.rotation);
         newModel.transform.parent = transform;
         OnModelSet?.Invoke(newModel);
+        _text.text = scriptableItem.cost.ToString();
     }
 
     public override void Interact()
@@ -29,9 +33,9 @@ public class Item_Table : InteractableTable
         OnDisableInteractive.Invoke();
         _canBeUsed = false;
         StallHandler.Instance.RemoveItem(this);
-        OnCancel?.Invoke();
+        OnCancel?.Invoke(this);
         OnDisableInteractive.RemoveAllListeners();
-        Instantiate(_stoleEffect, new Vector3(_itemPoint.position.x, _itemPoint.position.y + 1, _itemPoint.position.z), Quaternion.identity);
+        Instantiate(_stoleEffect, new Vector3(_itemPoint.position.x, _itemPoint.position.y + _tableHeight, _itemPoint.position.z), Quaternion.identity);
     }
 
 

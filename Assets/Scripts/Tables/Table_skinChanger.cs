@@ -7,7 +7,7 @@ public class Table_skinChanger : MonoBehaviour
     public InteractableTable table;
     private GameObject modelGM;
     public Material normalMat, selectedMat, buyedMat;
-    private Renderer render;
+    [SerializeField] private Renderer render;
 
     private void Awake()
     {
@@ -19,7 +19,8 @@ public class Table_skinChanger : MonoBehaviour
 
     private void Start()
     {
-        render = GetComponent<Renderer>();
+        if (render == null)
+            render = GetComponent<Renderer>();
         table.outlineTrigger.onPlayerEnter.AddListener(SetSelected);
         table.outlineTrigger.onPlayerExit.AddListener(SetUnselected);
         table.OnDisableInteractive.AddListener(SetBuyed);

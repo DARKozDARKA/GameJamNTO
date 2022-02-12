@@ -27,6 +27,7 @@ public class Enemy : Character
     {
         AIHandler.Instance.AddNewEnemy(this);
         StartCoroutine(MakeSteps());
+        OnCashing += SetActiveMovement;
     }
 
     private void Update()
@@ -129,7 +130,7 @@ public class Enemy : Character
     }
 
 
-    public override void CancelInteract()
+    public override void CancelInteract(InteractableTable table)
     {
         SetNewStall();
     }
@@ -186,5 +187,13 @@ public class Enemy : Character
         }
 
 
+    }
+
+    private void SetActiveMovement(bool isActive)
+    {
+        if (isActive)
+            _agent.isStopped = false;
+        else
+            _agent.isStopped = true;
     }
 }

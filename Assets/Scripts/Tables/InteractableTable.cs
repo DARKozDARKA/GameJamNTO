@@ -12,7 +12,7 @@ public abstract class InteractableTable : MonoBehaviour
     public Transform interactPoint => _interactPoint;
 
     public UnityEvent OnDisableInteractive;
-    public Action OnCancel;
+    public Action<InteractableTable> OnCancel;
     public abstract void Interact();
 
     protected bool _canBeUsed = true;

@@ -104,7 +104,7 @@ public abstract class Character : MonoBehaviour
 
     }
 
-    public virtual void CancelInteract()
+    public virtual void CancelInteract(InteractableTable table)
     {
         // Pass
     }
