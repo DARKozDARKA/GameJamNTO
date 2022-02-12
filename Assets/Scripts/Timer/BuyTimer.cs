@@ -27,7 +27,7 @@ public class BuyTimer : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             _currentTime -= 1;
             OnTimeChange?.Invoke(_currentTime, _maxTime);
             if (_currentTime <= 0)

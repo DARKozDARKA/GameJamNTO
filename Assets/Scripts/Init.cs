@@ -40,7 +40,7 @@ public class Init : MonoBehaviour
         _UIManager.wheel.OnTimeEstablished += _timer.InitTimer;
         _timer.OnTimeChange += _UIManager.timer.ChangeTime;
 
-        _timer.OnTimeRunOut += Lose;
+        _timer.OnTimeRunOut += Win;
         _player.moneyController.OnAllMoneyWasted += Win;
 
     }
@@ -58,7 +58,7 @@ public class Init : MonoBehaviour
         _UIManager.wheel.OnSpinEnded -= StartGame;
         _timer.OnTimeChange -= _UIManager.timer.ChangeTime;
 
-        _timer.OnTimeRunOut -= Lose;
+        _timer.OnTimeRunOut -= Win;
         _player.moneyController.OnAllMoneyWasted -= Win;
     }
 
@@ -77,6 +77,9 @@ public class Init : MonoBehaviour
         _playerInput.Unsubscribe();
         _player.DisableMovement();
         AIHandler.Instance.PrintAllEnemiesSpendMoney();
+
+
+        SetPrefs();
     }
     private void Lose()
     {
@@ -87,6 +90,19 @@ public class Init : MonoBehaviour
         AIHandler.Instance.PrintAllEnemiesSpendMoney();
     }
 
+    private void SetPrefs()
+    {
+        if (!PlayerPrefs.HasKey("totalSpented"))
+        {
+            PlayerPrefs.SetInt("totalSpented", _player.moneyController.spendedMoney);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("totalSpented", PlayerPrefs.GetInt("totalSpented") + _player.moneyController.spendedMoney);
+
+        }
+        _UIManager.winMenu.SetText(_player.moneyController.spendedMoney);
+    }
 
 
 
