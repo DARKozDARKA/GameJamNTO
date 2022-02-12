@@ -40,6 +40,7 @@ public class Client : NetworkBehaviour
     public void SetPlayer(PlayerBehaviour player)
     {
         _clientPlayer = player;
+        Init.Instance.InitPlayer(player);
     }
 
     private void OnDisconnectedFromServer()

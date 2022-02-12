@@ -22,7 +22,7 @@ public class Init : MonoBehaviour
         Instance = this;
     }
 
-    private void InitPlayer(PlayerBehaviour player)
+    public void InitPlayer(PlayerBehaviour player)
     {
         _player = player;
         _cameraMover.Init(new CameraParameters(), _player.gameObject.transform);

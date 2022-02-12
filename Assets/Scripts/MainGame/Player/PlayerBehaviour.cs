@@ -42,6 +42,7 @@ public class PlayerBehaviour : Character
     }
     protected override void Awake()
     {
+        if (!isLocalPlayer) return;
         base.Awake();
         _playerMover = GetComponent<PlayerMover>();
 
@@ -49,6 +50,7 @@ public class PlayerBehaviour : Character
         gameObject.layer = 10;
         _playerMover.OnStep += _soundPlayer.PlayOneStep;
         OnCashing += _playerMover.SetActiveMovement;
+        NewPlayerJoin(connectionToServer.identity.netId);
     }
 
     private void OnDestroy()
@@ -84,6 +86,7 @@ public class PlayerBehaviour : Character
     [Command(requiresAuthority = false)]
     private void NewPlayerJoin(uint id)
     {
+        Client.Instance.SetPlayer(this);
         Server.Instance.SetNewPlayer(this, id);
     }
 
