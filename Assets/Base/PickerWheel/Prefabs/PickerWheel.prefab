@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41037017, g: 0.3584559, b: 0.5735294, a: 1}
+  m_Color: {r: 0.57254905, g: 0.4117647, b: 0.35686275, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -435,37 +435,67 @@ MonoBehaviour:
   tickAudioClip: {fileID: 0}
   volume: 0.5
   pitch: 1
-  spinDuration: 20
+  spinDuration: 3
   wheelSize: 1
   wheelPieces:
-  - Label: Lorem
+  - Label: 3$
     amount: 0
     time: 0
+    Chance: 0
+    Index: 0
+    _weight: 0
+  - Label: 20000$
+    amount: 20000
+    time: 180
     Chance: 100
     Index: 0
     _weight: 0
-  - Label: Iposum
+  - Label: 30$
     amount: 0
     time: 0
-    Chance: 100
+    Chance: 0
     Index: 0
     _weight: 0
-  - Label: Tupala
-    amount: 0
-    time: 0
-    Chance: 60
-    Index: 0
-    _weight: 0
-  - Label: Consectetur
-    amount: 0
-    time: 0
-    Chance: 25
-    Index: 0
-    _weight: 0
-  - Label: Vallar
-    amount: 0
-    time: 0
+  - Label: 100$
+    amount: 100
+    time: 10
     Chance: 10
+    Index: 0
+    _weight: 0
+  - Label: 50$
+    amount: 0
+    time: 0
+    Chance: 0
+    Index: 0
+    _weight: 0
+  - Label: 10000$
+    amount: 10000
+    time: 120
+    Chance: 100
+    Index: 0
+    _weight: 0
+  - Label: 10000$
+    amount: 10000
+    time: 300
+    Chance: 100
+    Index: 0
+    _weight: 0
+  - Label: 1$
+    amount: 0
+    time: 0
+    Chance: 0
+    Index: 0
+    _weight: 0
+  - Label: 5$
+    amount: 0
+    time: 0
+    Chance: 0
+    Index: 0
+    _weight: 0
+  - Label: 4000$
+    amount: 4000
+    time: 150
+    Chance: 100
     Index: 0
     _weight: 0
 --- !u!1 &1743374398951528
@@ -529,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6351644, g: 0.64565086, b: 0.6544118, a: 1}
+  m_Color: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -633,7 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.18039216, b: 0.34509805, a: 1}
+  m_Color: {r: 0.34509805, g: 0.20392157, b: 0.18039216, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -743,7 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23395547, g: 0.18041737, b: 0.3455882, a: 1}
+  m_Color: {r: 0.34509805, g: 0.2, b: 0.18039216, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
