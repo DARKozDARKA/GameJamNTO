@@ -62,4 +62,9 @@ public class Inventory : MonoBehaviour
     {
         return totalWeight == maxWeight;
     }
+
+    public bool CheckIfEmpty()
+    {
+        return totalWeight == 0;
+    }
 }
