@@ -41,6 +41,7 @@ public class Init : MonoBehaviour
         _UIManager.wheel.OnTimeEstablished += _timer.InitTimer;
         _UIManager.wheel.OnSpinStarted += StartSpin;
         _timer.OnTimeChange += _UIManager.timer.ChangeTime;
+        StallHandler.Instance.OnStallsEnded += Win;
 
         _timer.OnTimeRunOut += Win;
 
@@ -80,6 +81,7 @@ public class Init : MonoBehaviour
     private void Win()
     {
         _timer.OnTimeRunOut -= Lose;
+        StallHandler.Instance.OnStallsEnded -= Win;
         _UIManager.screens.SetWinScreen();
         _playerInput.Unsubscribe();
         _player.DisableMovement();

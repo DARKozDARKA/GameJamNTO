@@ -15,5 +15,9 @@ public class InputDistributor : MonoBehaviour
 #if PLATFORM_ANDROID
         return android;
 #endif
+
+#if UNITY_STANDALONE_WIN
+        return windows;
+#endif
     }
 }

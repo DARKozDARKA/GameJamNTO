@@ -25,6 +25,7 @@ namespace Michsky.UI.ModernUIPack
         public bool useRoundValue = false;
         public float minValue;
         public float maxValue;
+        public float currentValue => mainSlider.value;
 
         // Events
         [System.Serializable]
@@ -56,7 +57,7 @@ namespace Michsky.UI.ModernUIPack
                     });
                 }
 
-                mainSlider.onValueChanged.AddListener(delegate 
+                mainSlider.onValueChanged.AddListener(delegate
                 {
                     sliderEvent.Invoke(mainSlider.value);
                     UpdateUI();
